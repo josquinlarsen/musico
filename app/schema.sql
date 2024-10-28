@@ -1,10 +1,12 @@
-# Flask Tutorial 
+-- Flask Tutorial 
 
 DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS post;
 
-CREATE TABLE user (
+CREATE TABLE users (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
+  first_name VARCHAR(50) NOT NULL,
+  last_name VARCHAR(50) NOT NULL,
   username TEXT UNIQUE NOT NULL,
   password TEXT NOT NULL,
   email TEXT NOT NULL
