@@ -66,7 +66,7 @@ def login():
         if user and check_password_hash(user.password, password):
             session['user_id'] = user.id
             session['username'] = user.username
-            return redirect(url_for('home'))
+            return redirect(url_for('users/home'))
         else:
             flash('Invalid credentials. Please try again.')
     return render_template('users/login.html')
@@ -86,7 +86,7 @@ def update():
             user.password = generate_password_hash(request.form['password'])
         db.session.commit()
         flash('User details updated successfully.')
-        return redirect(url_for('home'))
+        return redirect(url_for('users/home'))
     
     return render_template('users/update.html', user=user)
 

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Update Client{% endblock %}
+
+{% block content %}
+<h1>Update Client</h1>
+<form method="POST">
+    <label for="name">Name:</label>
+    <input type="text" name="name" required>
+    <br>
+    <label for="email">Email:</label>
+    <input type="email" name="email" required>
+    <br>
+    <label for="address">Street Address:</label>
+    <input type="text" name="address">
+    <br>
+    <label for="city">City:</label>
+    <input type="text" name="city">
+    <br>
+    <label for="state">State:</label>
+    <input type="text" name="state" required>
+    <br>
+    <label for="date">Event Date:</label>
+    <input type="date" name="date" required>
+    <br>
+    <button type="submit">Update</button>
+</form>
+<a href="{{ url_for('clients') }}">Back to Clients</a>
+{% endblock %}
