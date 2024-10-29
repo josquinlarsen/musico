@@ -1,6 +1,78 @@
 /* CHANGE THIS! */
+:root {
+    --black:      rgba(11,32,39);
+    --lightblue:  rgba(206,215,242);
+    --blue:       rgba(83,104,166);
+    --green:      rgba(3,96,22);
+    --mint:       rgba(143,247,167);
+    --yellow:     rgba(239, 202, 8);
+    --salt:       rgba(247, 247, 247);  }
 
-html { font-family: sans-serif; background: #eee; padding: 1rem; }
+  /*  ----- Form ----- */
+  form {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family:"PT-Sans", sans-serif;
+    font-size:95%;
+  
+  }
+  fieldset {
+    border:none;
+    margin-bottom:
+  }
+
+  label {
+    display: block;
+    border-radius:25px;
+    margin-top:3%;
+    padding:2%;
+  }
+  label.required:after{
+    content:"*";
+    color:var(--yellow);
+  }
+  button {
+    font-family:"PT-Sans", sans-serif;
+    background-color: var(--blue);
+    color: var(--yellow);
+    margin-top:5%;
+    padding:1%;
+    float: right; 
+    cursor: pointer;
+  }
+  textarea {
+    font-family:"PT-Sans", sans-serif;
+    border: 1.5px solid var(--black);
+    border-radius: 5px;
+    height:500px;
+    width:450px;
+    font-size:110%;
+
+  }
+  input {
+    border: 1.5px solid var(--black);
+    border-radius: 5px;
+    padding:1%;
+    font-size: 110%;
+    width:450px;
+  }
+  input[type="button"], button[type="button"], input[type="submit"] {
+    border-radius:5px;
+    background-color:var(--black);
+    color:var(--salt);
+    font-size: 1rem;
+    font-weight:bold;
+    border:1.5px solid var(--black);
+    padding:3%;
+  }
+  input[type="button"]:hover, button[type="button"]:hover, input[type="submit"]:hover {
+    background-color:var(--salt);
+    color:var(--black);
+  }
+
+
+/* html { font-family: sans-serif; background: #eee; padding: 1rem; }
 body { max-width: 960px; margin: 0 auto; background: white; }
 h1 { font-family: serif; color: #377ba8; margin: 1rem 0; }
 a { color: #377ba8; }
@@ -25,4 +97,4 @@ nav ul li a, nav ul li span, header .action { display: block; padding: 0.5rem; }
 .content input, .content textarea { margin-bottom: 1em; }
 .content textarea { min-height: 12em; resize: vertical; }
 input.danger { color: #cc2f2e; }
-input[type=submit] { align-self: start; min-width: 10em; }
+input[type=submit] { align-self: start; min-width: 10em; } */
