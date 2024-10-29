@@ -7,16 +7,24 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <nav>
-        <a href="{{ url_for('home') }}">Home</a>
-        {% if 'user_id' in session %}
-            <a href="{{ url_for('update') }}">Update</a>
-            <a href="{{ url_for('logout') }}">Logout</a>
-        {% else %}
-            <a href="{{ url_for('login') }}">Login</a>
-            <a href="{{ url_for('register') }}">Register</a>
-        {% endif %}
-    </nav>
+<header>
+    <div class="navbar">
+        <div><h1>musico</h1></div>
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+            {% if 'user_id' in session %}
+                <a href="{{ url_for('update') }}">Update</a>
+                <a href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('register') }}">Register</a>
+            {% endif %}
+        </nav>
+    </div>
+
+</header>
+
+    
     <div>
         {% with messages = get_flashed_messages() %}
             {% if messages %}
@@ -29,5 +37,8 @@
         {% endwith %}
     </div>
     {% block content %}{% endblock %}
+<footer>
+    <p>&copy;2024 musico</p>
+</footer>
 </body>
 </html>

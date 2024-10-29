@@ -9,9 +9,10 @@
 <a href="{{ url_for('create_client') }}">Add</a>
 
 <table>
+    <caption>Client Roster</caption>
     <thead>
         <tr>
-           
+    
             <th>Name</th>
             <th>Email</th>
             <th>Address</th>
@@ -25,7 +26,6 @@
     <tbody>
         {% for client in clients %}
             <tr>
-                
                 <td>{{ client.name }}</td>
                 <td>{{ client.email }}</td>
                 <td>{{ client.address }}</td>
