@@ -24,8 +24,15 @@ class User(db.Model):
 with app.app_context():
     db.create_all()
 
-
 @app.route("/")
+def pre_home():
+    """
+    Landing page before logging in
+    """
+    return render_template("pre_home.html")
+
+
+@app.route("/home") # update router to /home
 def home():
     """
     Home Page router
@@ -33,9 +40,10 @@ def home():
     if "user_id" in session:
         clients = get_clients() 
         return render_template(
-            "home.html", username=session["username"], clients=clients
+            "users/home.html", username=session["username"], clients=clients
         )
-    return redirect(url_for("login"))
+    return redirect(url_for("pre_home"))
+    # return render_template("pre_home.html")
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -108,7 +116,7 @@ def update():
 def logout():
     session.pop("user_id", None)
     session.pop("username", None)
-    return redirect(url_for("login"))
+    return redirect(url_for("pre_home"))
 
 
 # -------------------------------------------------------------------------------
@@ -124,14 +132,37 @@ def get_clients():
     except requests.RequestException:
         return []
 
-
+# update redirects from login to pre_home?
 @app.route("/clients")
 def clients():
+    """
+    Router for client home page
+    """
     if "user_id" not in session:
         return redirect(url_for("login"))
 
+    # clients = get_clients()
+    return render_template("clients/clients.html")
+
+@app.route("/clients/manage")
+def manage_clients():
+    """
+    Router for manage client table
+    """
+    if "user_id" not in session:
+        return redirect(url_for("login"))
+    
+    return render_template("clients/manage_clients.html")
+
+@app.route("/clients/roster")
+def view_clients():
+    """
+    View Roster router
+    """
+    if "user_id" not in session:
+        return redirect(url_for("login"))
     clients = get_clients()
-    return render_template("clients/clients.html", clients=clients)
+    return render_template("clients/view_clients.html", clients=clients)
 
 
 @app.route("/clients/new", methods=["GET", "POST"])
