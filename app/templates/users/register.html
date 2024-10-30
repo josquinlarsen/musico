@@ -3,25 +3,37 @@
 {% block title %}Register{% endblock %}
 
 {% block content %}
-<h1>Register</h1>
-<form method="POST">
-    <fieldset>
-        <label for="first_name">First Name:</label>
-        <input type="text" name="first_name" required>
+<main>
+    <div class="block">
+        <h1>Register</h1>
+        <article class ="infohint">
+            <p>Fill out the form to create your free account and access all
+                of musico's awesome features!
+            </p>
+        </article>
         
-        <label for="last_name">Last Name:</label>
-        <input type="text" name="last_name" required>
-       
-        <label for="email">Email:</label>
-        <input type="text" name="email" required>
+    </div>
+    <div class="block">
+    <form method="POST">
+        <fieldset>
+            <label for="first_name">First Name:</label>
+            <input type="text" name="first_name" required>
+            
+            <label for="last_name">Last Name:</label>
+            <input type="text" name="last_name" required>
         
-        <label for="username">Username:</label>
-        <input type="text" name="username" required>
-       
-        <label for="password">Password:</label>
-        <input type="password" name="password" required>
-       
-        <button type="submit">Register</button>
-    </fieldset>
-</form>
+            <label for="email">Email:</label>
+            <input type="text" name="email" required>
+            
+            <label for="username">Username:</label>
+            <input type="text" name="username" required>
+        
+            <label for="password">Password:</label>
+            <input type="password" name="password" required>
+        
+            <button type="submit">Register</button>
+        </fieldset>
+    </form>
+    </div>
+</main>
 {% endblock %}
