@@ -120,7 +120,7 @@ def logout():
 
 
 # -------------------------------------------------------------------------------
-#  FastAPI communication pipe
+#  FastAPI - Client communication pipe
 # -------------------------------------------------------------------------------
 
 
@@ -152,7 +152,8 @@ def manage_clients():
     if "user_id" not in session:
         return redirect(url_for("login"))
     
-    return render_template("clients/manage_clients.html")
+    clients = get_clients()
+    return render_template("clients/manage_clients.html", clients=clients)
 
 @app.route("/clients/roster")
 def view_clients():
@@ -186,7 +187,9 @@ def create_client():
         print()
         if response.status_code == 200:
             flash("Client created successfully.")
-            return redirect(url_for("clients/clients"))
+            return redirect(url_for("clients"))
+        elif response.status_code == 400:
+            flash(response.json()['detail'])
         else:
             flash("Failed to create client.")
 
@@ -230,7 +233,7 @@ def delete_client(client_id):
         flash("Client deleted successfully.")
     else:
         flash("Failed to delete client.")
-    return redirect(url_for("clients"))
+    return redirect(url_for("manage_clients"))
 
 
 def get_client(client_id):

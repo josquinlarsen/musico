@@ -3,17 +3,13 @@
 {% block title %}Clients{% endblock %}
 
 {% block content %}
-
 <h1>Clients</h1>
-
-<!-- Button to create a new client -->
-<a href="{{ url_for('create_client') }}">Add</a>
 
 <table>
     <caption>Client Roster</caption>
     <thead>
         <tr>
-    
+            <th><a href="{{ url_for('create_client') }}">Add</a>
             <th>Name</th>
             <th>Email</th>
             <th>Event Address</th>
@@ -21,18 +17,18 @@
             <th>Event State</th>
             <th>Event Date</th>
             <th>Actions</th>
-            
         </tr>
     </thead>
     <tbody>
         {% for client in clients %}
             <tr>
+                <td></td>
                 <td>{{ client.name }}</td>
                 <td>{{ client.email }}</td>
                 <td>{{ client.address }}</td>
                 <td>{{ client.city }}</td>
                 <td>{{ client.state }}</td>
-                <td>{{ client.event_date }}</td>
+                <td>{{ client.date }}</td>
                 <td>
                     <!-- Button to edit the client -->
                     <a href="{{ url_for('update_client', client_id=client.id) }}">Edit</a>
@@ -46,5 +42,5 @@
     </tbody>
 </table>
 
-<a href="{{ url_for('clients') }}">Back to Clients</a>
+<a href="{{ url_for('view_clients') }}">Roster</a>
 {% endblock %}

@@ -28,11 +28,11 @@
                 <td>{{ client.address }}</td>
                 <td>{{ client.city }}</td>
                 <td>{{ client.state }}</td>
-                <td>{{ client.event_date }}</td>
+                <td>{{ client.date }}</td>
             </tr>
         {% endfor %}
     </tbody>
 </table>
 
-<a href="{{ url_for('clients') }}">Manage Clients</a>
+<a href="{{ url_for('manage_clients') }}">Manage Clients</a>
 {% endblock %}
