@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Clients{% endblock %}
+
+{% block content %}
+<h1>Clients</h1>
+
+<!-- Button to create a new client -->
+<a href="{{ url_for('create_client') }}">Add</a>
+
+<table>
+    <caption>Client Roster</caption>
+    <thead>
+        <tr>
+    
+            <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Event Date</th>
+            <th>Actions</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for client in clients %}
+            <tr>
+                <td>{{ client.name }}</td>
+                <td>{{ client.email }}</td>
+                <td>{{ client.address }}</td>
+                <td>{{ client.city }}</td>
+                <td>{{ client.state }}</td>
+                <td>{{ client.event_date }}</td>
+                <td>
+                    <!-- Button to edit the client -->
+                    <a href="{{ url_for('update_client', client_id=client.id) }}">Edit</a>
+                    <!-- Button to delete the client -->
+                    <form action="{{ url_for('delete_client', client_id=client.id) }}" method="post" style="display:inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{{ url_for('clients') }}">Back to Clients</a>
+{% endblock %}
