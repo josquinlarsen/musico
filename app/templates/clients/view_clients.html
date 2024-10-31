@@ -3,6 +3,7 @@
 {% block title %}Clients{% endblock %}
 
 {% block content %}
+<main>
 <h1>Clients</h1>
 
 
@@ -13,9 +14,9 @@
     
             <th>Name</th>
             <th>Email</th>
-            <th>Address</th>
-            <th>City</th>
-            <th>State</th>
+            <th>Event Address</th>
+            <th>Event City</th>
+            <th>Event State</th>
             <th>Event Date</th>
             
         </tr>
@@ -33,6 +34,8 @@
         {% endfor %}
     </tbody>
 </table>
-
+<div class="page_buttons">
 <a href="{{ url_for('manage_clients') }}">Manage Clients</a>
+</div>
+</main>
 {% endblock %}

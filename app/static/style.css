@@ -17,14 +17,18 @@
     }
 
     main { 
-      min-height: 75vh;
+      /* display: inline-block; */
+      min-height: 80vh;
       margin:1%; 
+    }
+    div {
+      display:inline-block;
+      padding: 0.5%;
     }
 
     header {
     background-color: var(--green);
     color:var(--salt);
-    /* position: relative; */
     border-bottom: 3px solid var(--slate);
     padding:2%;
     }
@@ -42,6 +46,25 @@
     font-weight: 700;
     }
 
+    .page_buttons a:hover {
+      color:var(--green);
+      background-color: var(--mint);
+      border: 1.5px solid var(--salt);
+      border-radius: 5px;
+      font-size:calc(1.1rem);
+    }
+
+    .page_buttons a{
+      color:var(--green);
+      text-decoration:none;
+      padding: 3px 10px 5px 10px;
+      border: 1px solid var(--green);
+    }
+    .page_buttons {
+      margin:1%;
+      float:right;
+      
+    }
 
     a:link {color:var(--mint);}
     nav {
@@ -85,7 +108,7 @@
     form {
     display:flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: right;
     font-family:"PT-Sans", sans-serif;
     font-size:95%;
     }
@@ -97,8 +120,8 @@
     label {
     display: block;
     border-radius:25px;
-    margin-top:3%;
-    padding:2%;
+    margin-top:1%;
+    padding:0.5%;
     }
     label.required:after{
     content:"*";
@@ -108,9 +131,9 @@
     font-family:"PT-Sans", sans-serif;
     background-color: var(--blue);
     color: var(--yellow);
-    margin-top:5%;
+    margin-top:3%;
     padding:1%;
-    float: right; 
+    float: left; 
     cursor: pointer;
     }
     textarea {
@@ -125,7 +148,7 @@
     input {
     border: 1.5px solid var(--black);
     border-radius: 5px;
-    padding:1%;
+    padding:0.5%;
     font-size: 110%;
     width:450px;
     }
@@ -146,14 +169,14 @@
     /* Table */
     table {
         /* border-collapse:collapse; */
-        /* max-width:auto; */
+        min-width:auto;
         margin:1px auto;
         padding:1%;
       }
       caption {
-        background-color:var(--yellow); 
-        border:3px double var(--green); 
-        color:var(--blue); 
+        background-color:var(--salt); 
+        border-bottom:3px solid var(--green); 
+        color:var(--green); 
         font-weight:bold; 
         padding:1% 0; 
       }
@@ -165,21 +188,13 @@
       tbody{}
       tr td{
         text-align: center;
-        border-bottom: 1px dashed var(--red);
-        padding:5%;
+        border-bottom: 1px dashed var(--mint);
+        padding:1%;
       }
       tr th{
         background-color:var(--cream);
-        padding:1%;
-        min-width:5rem;
+        padding:0.5%;
+        min-width:7rem;
       }
-      tfoot {}
-      tr {}
-        tr:nth-child(even) {}
-      th {}
-      td {}
-        td:nth-child(1) {}
-      colgroup {}
-      data {}
-      datalist {}
+
 

@@ -3,7 +3,12 @@
 {% block title %}Update Client{% endblock %}
 
 {% block content %}
+<main>
+    <div class="page_buttons">
+        <a href="{{ url_for('clients') }}">Clients Home</a>
+    </div>
 <h1>Update Client</h1>
+
 <form method="POST">
     <fieldset>
         <label for="name">Name:</label>
@@ -27,5 +32,6 @@
         <button type="submit">Update</button>
     </fieldset>
 </form>
-<a href="{{ url_for('clients') }}">Back to Clients</a>
+
+</main>
 {% endblock %}
