@@ -168,6 +168,9 @@ def view_clients():
 
 @app.route("/clients/new", methods=["GET", "POST"])
 def create_client():
+    """
+    Post/Create Client Pipeline
+    """
     if "user_id" not in session:
         return redirect(url_for("login"))
 
@@ -198,6 +201,9 @@ def create_client():
 
 @app.route("/clients/edit/<int:client_id>", methods=["GET", "POST"])
 def update_client(client_id):
+    """
+    Put/Update Client Pipeline
+    """
     if "user_id" not in session:
         return redirect(url_for("login"))
 
@@ -225,14 +231,21 @@ def update_client(client_id):
 
 @app.route("/clients/delete/<int:client_id>", methods=["POST"])
 def delete_client(client_id):
+    """
+    Delete Client pipeline
+    """
     if "user_id" not in session:
         return redirect(url_for("login"))
-
-    response = requests.delete(f"http://127.0.0.1:8000/client/{client_id}")
-    if response.status_code == 200:
-        flash("Client deleted successfully.")
+    # pop-up for IH2, IH7
+    if request.form.get("confirm") == "yes":
+        response = requests.delete(f"http://127.0.0.1:8000/client/{client_id}")
+        if response.status_code == 200:
+            flash("Client deleted successfully.")
+        else:
+            flash("Error: Failed to delete client.")
+        return redirect(url_for("manage_clients"))
     else:
-        flash("Failed to delete client.")
+        flash("Delete operation cancelled.")
     return redirect(url_for("manage_clients"))
 
 

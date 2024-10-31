@@ -33,14 +33,21 @@
                     <!-- Button to edit the client -->
                     <a href="{{ url_for('update_client', client_id=client.id) }}">Edit</a>
                     <!-- Button to delete the client -->
-                    <form action="{{ url_for('delete_client', client_id=client.id) }}" method="post" style="display:inline;">
+                    <form action="{{ url_for('delete_client', client_id=client.id) }}" method="post" onsubmit="return confirmDelete();">
                         <button type="submit">Delete</button>
+                        <input type="hidden" name="confirm" value="yes">
                     </form>
                 </td>
             </tr>
         {% endfor %}
     </tbody>
 </table>
+
+<script>
+    function confirmDelete() {
+        return confirm('Do you want to delete? This cannot be undone.');
+    }
+</script>
 
 <a href="{{ url_for('view_clients') }}">Roster</a>
 {% endblock %}
