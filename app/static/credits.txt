@@ -1,0 +1,3 @@
+Icons from https://iconoir.com/
+Flask based on Flask Tutorial/Documentation : https://flask.palletsprojects.com/en/stable/tutorial/
+FastAPI from FastAPIi Tutorial/Documentation: https://fastapi.tiangolo.com/tutorial/

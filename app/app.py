@@ -100,9 +100,17 @@ def update():
     if "user_id" not in session:
         return redirect(url_for("login"))
 
+    # this needs to change to populate the update form. 
     user = User.query.get(session["user_id"])
+    print()
+    print(user.first_name)
+    print()
+
     if request.method == "POST":
         user.username = request.form["username"]
+        user.first_name = request.form["first_name"]
+        user.last_name = request.form["last_name"]
+        user.email = request.form["email"]
         if request.form["password"]:
             user.password = generate_password_hash(request.form["password"])
         db.session.commit()

@@ -3,12 +3,14 @@
 /* https://github.com/josquinlarsen/CodaBlog*/
     :root {
     --black:      rgba(11,32,39);
+    --lavender:   rgba(191,148,228);
     --lightblue:  rgba(206,215,242);
     --blue:       rgba(83,104,166);
     --green:      rgba(3,96,22);
     --mint:       rgba(143,247,167);
-    --yellow:     rgba(239, 202, 8);
-    --salt:       rgba(247, 247, 247);  }
+    --yellow:     rgba(247, 225, 160);
+    --salt:       rgba(247, 247, 247);
+    --slate:      rgba(98,95,99);  }
 
     body {      
     background-color: var(--salt);
@@ -27,9 +29,9 @@
     }
 
     header {
-    background-color: var(--green);
+    background-color: var(--lavender);
     color:var(--salt);
-    border-bottom: 3px solid var(--slate);
+    border-bottom: 2px solid var(--slate);
     padding:2%;
     }
 
@@ -65,6 +67,8 @@
       float:right;
       
     }
+    button.ignore{ all: unset;
+    cursor: pointer;}
 
     a:link {color:var(--mint);}
     nav {
@@ -75,7 +79,7 @@
         height:50px;
       }
       nav a {
-        color:var(--mint);
+        color:var(--black);
         text-decoration:none;
         padding: 3px 10px 5px 10px;
       }

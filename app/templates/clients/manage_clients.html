@@ -10,7 +10,7 @@
     <caption>Client Roster</caption>
     <thead>
         <tr>
-            <th><a href="{{ url_for('create_client') }}">Add</a>
+            <th><a href="{{ url_for('create_client') }}"><img src="{{ url_for('static', filename='images/add.svg')}}" title="Add new client"/></a>
             <th>Name</th>
             <th>Email</th>
             <th>Event Address</th>
@@ -32,10 +32,10 @@
                 <td>{{ client.date }}</td>
                 <td>
                     <!-- Button to edit the client -->
-                    <a href="{{ url_for('update_client', client_id=client.id) }}">Edit</a>
+                    <a href="{{ url_for('update_client', client_id=client.id) }}"><img src="{{ url_for('static', filename='images/edit.svg')}}" title="Edit client details"/></a>
                     <!-- Button to delete the client -->
-                    <form action="{{ url_for('delete_client', client_id=client.id) }}" method="post" onsubmit="return confirmDelete();">
-                        <button type="submit">Delete</button>
+                    <form action="{{ url_for('delete_client', client_id=client.id) }}" method="post" onclick="return confirmDelete();">
+                        <button class="ignore"><img src="{{ url_for('static', filename='images/delete.svg')}}" title="Delete client"/></button>
                         <input type="hidden" name="confirm" value="yes">
                     </form>
                 </td>
