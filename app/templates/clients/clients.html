@@ -9,15 +9,13 @@
     <h1>Clients</h1>
     <div class="page_buttons">
         
-        <a href="{{ url_for('manage_clients') }}">Manage Clients</a>
-        <a href="{{ url_for('view_clients') }}">Roster</a>
+        <a href="{{ url_for('manage_clients') }}" title="Add, Edit or Delete Clients">Manage Clients</a>
+        <a href="{{ url_for('view_clients') }}" title="View roster to avoid making unwanted changes">Roster</a>
     </div>
     
 
     <div>
-        <p> Manage your clients or view your roster here 
-            <div class="question"><img src="{{ url_for('static', filename='images/question.svg')}}" class="tooltip"/></div>
-        </p>
+        <p> Manage your clients or view your roster here </p>
     </div>
 
 

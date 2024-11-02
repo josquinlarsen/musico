@@ -5,8 +5,9 @@
 {% block content %}
 <main>
 <h1>Clients</h1>
-
-
+    <div class="page_buttons">
+        <a href="{{ url_for('manage_clients') }}">Manage Clients</a>
+    </div>
 <table>
     <caption>Client Roster</caption>
     <thead>
@@ -34,8 +35,6 @@
         {% endfor %}
     </tbody>
 </table>
-<div class="page_buttons">
-<a href="{{ url_for('manage_clients') }}">Manage Clients</a>
-</div>
+
 </main>
 {% endblock %}

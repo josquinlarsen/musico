@@ -9,6 +9,7 @@
     --green:      rgba(3,96,22);
     --mint:       rgba(143,247,167);
     --yellow:     rgba(247, 225, 160);
+    --yellowT:    rgba(247, 225, 160, 0.5);
     --salt:       rgba(247, 247, 247);
     --slate:      rgba(98,95,99);  }
 
@@ -70,9 +71,29 @@
     button.ignore{ all: unset;
     cursor: pointer;}
 
-    .question {
-      border-radius: 100px; 
-      border: 1px dotted var(--mint);}
+    .tooltip {
+      position:relative;
+    }
+    .tooltip:before{
+      content:attr(data-text);
+      position:absolute;
+      top:50%;
+      transform: translateY(-50%);
+      left:100%;
+      margin-left:15px;
+      width:200px;
+      padding:15px;
+      border:1px dotted var(--blue);
+      border-radius: 10px;
+      background:var(--yellowT);
+      color:var(--blue);
+      text-align: center;
+      display:none;
+    }
+
+    .tooltip:hover:before{
+      display:block;
+    }
 
     a:link {color:var(--mint);}
     nav {
@@ -88,11 +109,10 @@
         padding: 3px 10px 5px 10px;
       }
       nav a:hover {
-        color:var(--green);
+        color:var(--salt);
         background-color: var(--mint);
         border: 1.5px solid var(--salt);
         border-radius: 5px;
-        color: white;
         font-size:calc(1.1rem);
       }
       

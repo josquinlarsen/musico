@@ -4,7 +4,10 @@
 
 {% block content %}
 <main>
-<h1>Clients</h1>
+    <h1>Clients</h1>
+    <div class="page_buttons">
+        <a href="{{ url_for('view_clients') }}">Roster</a>
+    </div>
 
 <table>
     <caption>Client Roster</caption>
@@ -49,8 +52,6 @@
         return confirm('Do you want to delete? This cannot be undone.');
     }
 </script>
-<div class="page_buttons">
-<a href="{{ url_for('view_clients') }}">Roster</a>
-</div>
+
 </main>
 {% endblock %}
