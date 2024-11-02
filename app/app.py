@@ -38,12 +38,12 @@ def home():
     Home Page router
     """
     if "user_id" in session:
+        user = User.query.get(session["user_id"])
         clients = get_clients() 
         return render_template(
-            "users/home.html", username=session["username"], clients=clients
+            "users/home.html", username=session["username"], user=user, clients=clients
         )
     return redirect(url_for("pre_home"))
-    # return render_template("pre_home.html")
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -91,6 +91,19 @@ def login():
             flash("Invalid credentials. Please try again.")
     return render_template("users/login.html")
 
+@app.route("/profile")
+def profile():
+    """
+    Router to User's profile page
+    """
+    if "user_id" not in session:
+        return redirect(url_for("pre_home"))
+    user = User.query.get(session["user_id"])
+    return render_template(
+            "users/profile.html", user=user
+        )
+    
+
 
 @app.route("/update", methods=["GET", "POST"])
 def update():
@@ -100,17 +113,15 @@ def update():
     if "user_id" not in session:
         return redirect(url_for("login"))
 
-    # this needs to change to populate the update form. 
     user = User.query.get(session["user_id"])
-    print()
-    print(user.first_name)
-    print()
+
 
     if request.method == "POST":
         user.username = request.form["username"]
         user.first_name = request.form["first_name"]
         user.last_name = request.form["last_name"]
         user.email = request.form["email"]
+
         if request.form["password"]:
             user.password = generate_password_hash(request.form["password"])
         db.session.commit()
@@ -198,7 +209,7 @@ def create_client():
         print()
         if response.status_code == 200:
             flash("Client created successfully.")
-            return redirect(url_for("clients"))
+            return redirect(url_for("manage_clients"))
         elif response.status_code == 400:
             flash(response.json()['detail'])
         else:
@@ -229,7 +240,10 @@ def update_client(client_id):
         )
         if response.status_code == 200:
             flash("Client updated successfully.")
-            return redirect(url_for("clients"))
+            return redirect(url_for("clients/manage_clients.html"))
+        
+        elif response.status_code == 400:
+            flash(response.json()['detail'])
         else:
             flash("Failed to update client.")
 

@@ -7,17 +7,18 @@
 <h1>Update User</h1>
 <form method="POST">
     <fieldset>
-        <label for="username">Username:</label>
+        <label for="username">Username</label>
         <input type="text" name="username" value="{{ user.username }}" required>
         
-        <label for="first_name">First Name:</label>
-        <input type="text" name="first_name" required>
+        <label for="first_name">First Name</label>
+        <input type="text" name="first_name" value="{{ user.first_name }}" required>
         
-        <label for="last_name">Last Name:</label>
-        <input type="text" name="last_name" required>
+        <label for="last_name">Last Name</label>
+        <input type="text" name="last_name" value="{{ user.last_name }}"required>
         
-        <label for="email">Email:</label>
-        <input type="text" name="email" required>
+        <label for="email">Email</label>
+        <input type="text" name="email" value="{{ user.email }}" required>
+
         <label for="password">New Password (leave blank to keep current):</label>
         <input type="password" name="password">
         

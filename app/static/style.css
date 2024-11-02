@@ -70,6 +70,10 @@
     button.ignore{ all: unset;
     cursor: pointer;}
 
+    .question {
+      border-radius: 100px; 
+      border: 1px dotted var(--mint);}
+
     a:link {color:var(--mint);}
     nav {
         display:flex;
@@ -133,8 +137,12 @@
     }
     button {
     font-family:"PT-Sans", sans-serif;
-    background-color: var(--blue);
-    color: var(--yellow);
+    background-color: var(--mint);
+    border: 1.5px solid var(--salt);
+    border-color:var(--black);
+    border-radius: 5px;
+    color: white;
+    font-size:calc(1.1rem);
     margin-top:3%;
     padding:1%;
     float: left; 
@@ -162,7 +170,7 @@
     color:var(--salt);
     font-size: 1rem;
     font-weight:bold;
-    border:1.5px solid var(--black);
+    border:1px solid var(--salt);
     padding:3%;
     }
     input[type="button"]:hover, button[type="button"]:hover, input[type="submit"]:hover {
