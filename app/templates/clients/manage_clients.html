@@ -5,8 +5,11 @@
 {% block content %}
 <main>
     <h1>Clients</h1>
+
     <div class="page_buttons">
-        <a href="{{ url_for('view_clients') }}">Roster</a>
+        <span class="tooltip_left" data-text="View Roster to avoid making unwanted changes.">
+            <a href="{{ url_for('view_clients') }}" class="page_buttons">Roster</a>
+        </span>
     </div>
 
 <table>
