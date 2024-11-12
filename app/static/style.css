@@ -28,6 +28,7 @@
       display:inline-block;
       padding: 0.5%;
     }
+    .homediv { max-width: 50%;}
 
     header {
     background-color: var(--lavender);
@@ -185,14 +186,14 @@
     }
     button {
     font-family:"PT-Sans", sans-serif;
-    background-color: var(--mint);
+    background-color: var(--green);
     border: 1.5px solid var(--salt);
     border-color:var(--black);
     border-radius: 5px;
-    color: white;
+    color: var(--salt);
     font-size:calc(1.1rem);
-    margin-top:3%;
-    padding:1%;
+    margin:3% 1%;
+    padding:2%;
     float: left; 
     cursor: pointer;
     }
@@ -227,6 +228,9 @@
     }
 
     /* Table */
+
+    .hidden {display:none;}
+
     table {
         /* border-collapse:collapse; */
         min-width:auto;
