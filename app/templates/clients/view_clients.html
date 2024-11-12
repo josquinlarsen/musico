@@ -24,7 +24,7 @@
     </thead>
     <tbody>
         {% for client in clients %}
-            <tr>
+            <tr class="{{ 'hidden' if loop.index > 3 else ''}}">
                 <td>{{ client.name }}</td>
                 <td>{{ client.email }}</td>
                 <td>{{ client.address }}</td>
@@ -35,6 +35,27 @@
         {% endfor %}
     </tbody>
 </table>
+<div>
+<button class="toggle_clients" id="loadMoreClients" onclick="loadMore()" title="load more clients"> +rows </button>
+<button class="hidden" id="showLessClients" onclick="showLess();" title="show fewer clients"> -rows </button>
+</div>
+<script>
+    function loadMore() {
+        document.querySelectorAll('.hidden').forEach(row => row.classList.remove('hidden'));
+        document.getElementById('loadMoreClients').style.display = 'none';
+        document.getElementById('showLessClients').style.display = 'inline';
+    }
 
+    function showLess() {
+        document.querySelectorAll('tr').forEach((row, index) => {
+            if (index > 3) {
+                row.classList.add('hidden');
+            }
+        });
+        document.getElementById('loadMoreClients').style.display = 'inline';
+        document.getElementById('showLessClients').style.display = 'none';
+        
+    }
+</script>
 </main>
 {% endblock %}
