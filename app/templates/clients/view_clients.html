@@ -8,36 +8,40 @@
     <div class="page_buttons">
         <a href="{{ url_for('manage_clients') }}">Manage Clients</a>
     </div>
-<table>
-    <caption>Client Roster</caption>
-    <thead>
-        <tr>
-    
-            <th>Name</th>
-            <th>Email</th>
-            <th>Event Address</th>
-            <th>Event City</th>
-            <th>Event State</th>
-            <th>Event Date</th>
-            
-        </tr>
-    </thead>
-    <tbody>
-        {% for client in clients %}
-            <tr class="{{ 'hidden' if loop.index > 3 else ''}}">
-                <td>{{ client.name }}</td>
-                <td>{{ client.email }}</td>
-                <td>{{ client.address }}</td>
-                <td>{{ client.city }}</td>
-                <td>{{ client.state }}</td>
-                <td>{{ client.date }}</td>
+<div class="container">
+    <div>
+    <table>
+        <caption>Client Roster</caption>
+        <thead>
+            <tr>
+        
+                <th>Name</th>
+                <th>Email</th>
+                <th>Event Address</th>
+                <th>Event City</th>
+                <th>Event State</th>
+                <th>Event Date</th>
+                
             </tr>
-        {% endfor %}
-    </tbody>
-</table>
-<div>
-<button class="toggle_clients" id="loadMoreClients" onclick="loadMore()" title="load more clients"> +rows </button>
-<button class="hidden" id="showLessClients" onclick="showLess();" title="show fewer clients"> -rows </button>
+        </thead>
+        <tbody>
+            {% for client in clients %}
+                <tr class="{{ 'hidden' if loop.index > 3 else ''}}">
+                    <td>{{ client.name }}</td>
+                    <td>{{ client.email }}</td>
+                    <td>{{ client.address }}</td>
+                    <td>{{ client.city }}</td>
+                    <td>{{ client.state }}</td>
+                    <td>{{ client.date }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    <div>
+    <button class="toggle_clients" id="loadMoreClients" onclick="loadMore()" title="load more clients"> +rows </button>
+    <button class="hidden" id="showLessClients" onclick="showLess();" title="show fewer clients"> -rows </button>
+    </div>
 </div>
 <script>
     function loadMore() {
