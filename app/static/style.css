@@ -37,6 +37,12 @@
     padding:2%;
     }
 
+    .container {
+      display: column;
+      align-items:right;
+      justify-content: right;
+    }
+
     .navbar {
     color:var(--salt);
     width: 100%;
@@ -193,8 +199,8 @@
     color: var(--salt);
     font-size:calc(1.1rem);
     margin:3% 1%;
-    padding:2%;
-    float: left; 
+    padding:2% 15px;
+    /* float: right;  */
     cursor: pointer;
     }
     textarea {
