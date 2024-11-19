@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Clients{% endblock %}
+
+{% block content %}
+<main>
+    <h1>Clients</h1>
+
+    <div class="page_buttons">
+        <span class="tooltip_left" data-text="View Roster to avoid making unwanted changes.">
+            <a href="{{ url_for('clients.view_clients') }}" class="page_buttons">Roster</a>
+        </span>
+    </div>
+
+<table>
+    <caption>Client Roster</caption>
+    <thead>
+        <tr>
+            <th><a href="{{ url_for('clients.create_client') }}"><img src="{{ url_for('static', filename='images/add.svg')}}" title="Add new client"/></a>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Event Address</th>
+            <th>Event City</th>
+            <th>Event State</th>
+            <th>Event Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for client in clients %}
+            <tr>
+                <td></td>
+                <td>{{ client.name }}</td>
+                <td>{{ client.email }}</td>
+                <td>{{ client.address | default('---', true) }}</td>
+                <td>{{ client.city | default('---', true) }}</td>
+                <td>{{ client.state }}</td>
+                <td>{{ client.date }}</td>
+                <td>
+                    <!-- Button to edit the client -->
+                     {{ edit_button(client.name, url_for('clients.update_client', client_id=client.id)) }}
+                    <!-- Button to delete the client -->
+                     {{ delete_button(client.name, url_for('clients.delete_client', client_id=client.id)) }}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</main>
+{% endblock %}

@@ -1,0 +1,4 @@
+Icons from https://iconoir.com/
+Flask based on Flask Tutorial/Documentation : https://flask.palletsprojects.com/en/stable/tutorial/
+FastAPI from FastAPIi Tutorial/Documentation: https://fastapi.tiangolo.com/tutorial/
+Tooltip Design taken from: https://blog.logrocket.com/creating-beautiful-tooltips-with-only-css/

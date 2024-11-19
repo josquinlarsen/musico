@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<main>
+<h1>Welcome, {{ user.username }}!</h1>
+    <div>
+        <p> Choose a menu item from the top right to get started. </p>
+    </div>
+    <span class="tooltip" data-text="'Clients' is where you can track the people you do business with!"
+    ><img src="{{ url_for('static', filename='images/question.svg')}}"/>
+    </span>
+
+
+</main>
+{% endblock %}

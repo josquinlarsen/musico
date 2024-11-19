@@ -1,0 +1,5 @@
+{% macro delete_button(entity_name, target_url) -%}
+<form class="ignore" action="{{ target_url }}" method="post" onsubmit="confirmDelete(event, '{{ entity_name }}')" )>
+    <button class="ignore" type="submit" title="Delete entity"><img src="{{ url_for('static', filename='images/delete.svg')}}"/></button>
+</form>
+{%- endmacro %}
