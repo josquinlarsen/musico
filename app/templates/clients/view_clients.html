@@ -29,8 +29,8 @@
                 <tr class="{{ 'hidden' if loop.index > 3 else ''}}">
                     <td>{{ client.name }}</td>
                     <td>{{ client.email }}</td>
-                    <td>{{ client.address }}</td>
-                    <td>{{ client.city }}</td>
+                    <td>{{ client.address | default('---', true) }}</td>
+                    <td>{{ client.city | default('---', true) }}</td>
                     <td>{{ client.state }}</td>
                     <td>{{ client.date }}</td>
                 </tr>

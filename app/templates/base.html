@@ -1,3 +1,6 @@
+{% from 'macros/inline_delete.html' import delete_button %}
+{% from 'macros/inline_edit.html' import edit_button %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}musico{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
 </head>
 <body>
 <header>

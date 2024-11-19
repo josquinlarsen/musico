@@ -38,9 +38,11 @@
     }
 
     .container {
-      display: column;
-      align-items:right;
-      justify-content: right;
+      margin-left:5%;
+      display: flex;
+      flex-direction: column;
+      align-items:flex-start;
+      justify-content: center;
     }
 
     .navbar {
@@ -258,6 +260,7 @@
         text-align: center;
         border-bottom: 1px dashed var(--mint);
         padding:1%;
+        margin:0 1%;
       }
       tr th{
         background-color:var(--cream);
