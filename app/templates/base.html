@@ -1,0 +1,47 @@
+{% from 'macros/inline_delete.html' import delete_button %}
+{% from 'macros/inline_edit.html' import edit_button %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}musico{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</head>
+<body>
+<header>
+    <div class="navbar">
+        <div><h1>musico</h1></div>
+        <nav>
+            {% if 'user_id' in session %}
+                <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('clients') }}">Clients</a>
+                <a href="{{ url_for('profile') }}">Profile</a>
+                <a href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+                <a href="{{ url_for('pre_home') }}">Home</a>
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('register') }}">Register</a>
+            {% endif %}
+        </nav>
+    </div>
+</header>    
+    <div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+    {% block content %}{% endblock %}
+<footer>
+    <p>&copy;2024 musico</p>
+</footer>
+</body>
+</html>
