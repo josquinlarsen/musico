@@ -1,0 +1,19 @@
+{% macro add_button(target_url) -%}
+<a href="{{ target_url }}">
+    <img src="{{ url_for('static', filename='images/add.svg')}}" title="Add new entry"/>
+</a>
+{%- endmacro %}
+
+
+{% macro edit_button(entity_id, target_url) -%}
+<a href="{{ target_url }}" method="post" title="Edit entity details">
+    <img src="{{ url_for('static', filename='images/edit.svg')}}"/>
+</a>
+{%- endmacro %}
+
+
+{% macro delete_button(entity_name, target_url) -%}
+<form class="ignore" action="{{ target_url }}" method="post" onsubmit="confirmDelete(event, '{{ entity_name }}')" )>
+    <button class="ignore" type="submit" title="Delete entity"><img src="{{ url_for('static', filename='images/delete.svg')}}"/></button>
+</form>
+{%- endmacro %}
