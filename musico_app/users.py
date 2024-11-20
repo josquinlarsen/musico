@@ -30,50 +30,50 @@ def home():
     return redirect(url_for("index.home"))
 
 
-@bp.route("/register", methods=["GET", "POST"])
-def register():
-    """
-    Register User Router
-    """
-    if request.method == "POST":
-        first_name = request.form["first_name"]
-        last_name = request.form["last_name"]
-        email = request.form["email"]
-        username = request.form["username"]
-        password = request.form["password"]
-        hashed_password = generate_password_hash(password)
-        new_user = User(
-            first_name=first_name,
-            last_name=last_name,
-            email=email,
-            username=username,
-            password=hashed_password,
-        )
+# @bp.route("/register", methods=["GET", "POST"])
+# def register():
+#     """
+#     Register User Router
+#     """
+#     if request.method == "POST":
+#         first_name = request.form["first_name"]
+#         last_name = request.form["last_name"]
+#         email = request.form["email"]
+#         username = request.form["username"]
+#         password = request.form["password"]
+#         hashed_password = generate_password_hash(password)
+#         new_user = User(
+#             first_name=first_name,
+#             last_name=last_name,
+#             email=email,
+#             username=username,
+#             password=hashed_password,
+#         )
 
-        db.session.add(new_user)
-        db.session.commit()
-        flash("Registration successful! Please log in.")
-        return redirect(url_for("users.login"))
-    return render_template("users/register.html")
+#         db.session.add(new_user)
+#         db.session.commit()
+#         flash("Registration successful! Please log in.")
+#         return redirect(url_for("users.login"))
+#     return render_template("users/register.html")
 
 
-@bp.route("/login", methods=["GET", "POST"])
-def login():
-    """
-    User Login Router
-    """
-    if request.method == "POST":
-        username = request.form["username"]
-        password = request.form["password"]
-        user = User.query.filter_by(username=username).first()
+# @bp.route("/login", methods=["GET", "POST"])
+# def login():
+#     """
+#     User Login Router
+#     """
+#     if request.method == "POST":
+#         username = request.form["username"]
+#         password = request.form["password"]
+#         user = User.query.filter_by(username=username).first()
 
-        if user and check_password_hash(user.password, password):
-            session["user_id"] = user.id
-            session["username"] = user.username
-            return redirect(url_for("users.home"))
-        else:
-            flash("Invalid credentials. Please try again.")
-    return render_template("users/login.html")
+#         if user and check_password_hash(user.password, password):
+#             session["user_id"] = user.id
+#             session["username"] = user.username
+#             return redirect(url_for("users.home"))
+#         else:
+#             flash("Invalid credentials. Please try again.")
+#     return render_template("users/login.html")
 
 @bp.route("/profile")
 def profile():
