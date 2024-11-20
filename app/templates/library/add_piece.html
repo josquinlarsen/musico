@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Piece{% endblock %}
+
+{% block content %}
+<main>
+
+    <div class="page_buttons">
+        <a href="{{ url_for('library.index') }}">Library Home</a>
+    </div>
+    <h1>Add Piece</h1>
+    <form method="POST">
+        <fieldset>
+            <label for="title">Title:</label>
+            <input type="text" name="title" required>
+            
+            <label for="instrumentation">Instrumentation:</label>
+            <input type="text" name="instrumentation" required>
+            
+            <label for="duration">Duration:</label>
+            <input type="text" name="duration">
+            
+            <button type="submit">Add</button>
+        </fieldset>
+    </form>
+
+</main>
+{% endblock %}

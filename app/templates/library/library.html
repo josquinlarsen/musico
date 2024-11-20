@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Music Library{% endblock %}
+
+{% block content %}
+
+
+<main>
+    <h1>Music Library</h1>
+    <div class="page_buttons">
+        
+        <a href="{{ url_for('library.view_library') }}" title="Add, Edit or Delete Pieces">Manage Library</a>
+        <a href="{{ url_for('library.generate_setlist') }}" title="Generate Set List">Generate</a>
+    </div>
+   
+    <div>
+        <p> Manage your music library or generate a set list here! </p>
+    </div>
+
+
+</main>
+{% endblock %}

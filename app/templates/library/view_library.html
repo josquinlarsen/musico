@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Library{% endblock %}
+
+{% block content %}
+<main>
+<h1>Music Library</h1>
+    <div class="page_buttons">
+        <a href="{{ url_for('library.index') }}">Library Home</a>
+    </div>
+<div class="container">
+    <div>
+        <table>
+            <caption>Client Roster</caption>
+            <thead>
+                <tr>
+                    <th>{{ add_button(url_for('library.add_piece'))}}
+                    <th>Title</th>
+                    <th>Instrumentation</th>
+                    <th>Duration</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for piece in pieces %}
+                    <tr>
+                        <td></td>
+                        <td>{{ piece.title }}</td>
+                        <td>{{piece.instrumentation }}</td>
+                        <td>{{ piece.duration| default('---', true) }}</td>
+                        <td>
+                             {{ edit_button(piece.title, url_for('library.update_piece', piece_id=piece.id)) }}
+                             {{ delete_button(piece.title, url_for('library.delete_piece', piece_id=piece.id)) }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </main>
+{% endblock %}
+ 
