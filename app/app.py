@@ -10,21 +10,23 @@ from flask import (
 )
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
-from models.user import User, db
+from models import db
 import requests
 
-import clients, users, index
+import clients, users, index, library
 
 
 app = Flask(__name__)
 app.secret_key = "your_secret_key"
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///users.db"
+
 db.init_app(app)
 
 # register Blueprints
 app.register_blueprint(index.bp)
 app.register_blueprint(clients.bp, url_prefix="/clients")
 app.register_blueprint(users.bp, url_prefix="/users")
+app.register_blueprint(library.bp, url_prefix="/library")
 
 # Create the database
 with app.app_context():

@@ -10,7 +10,7 @@ from flask import (
 )
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
-from models.user import User, db
+from models import User, db
 import requests
 
 from clients import get_clients, get_client
