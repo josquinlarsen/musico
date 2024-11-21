@@ -34,14 +34,9 @@ def view_library():
     """
     if "user_id" not in session:
         return redirect(url_for("index.login"))
-    
-    data = {
 
-
-    }
-
-    # library = get_piece_all()
-    return render_template("library/view_library.html" ) # library=library
+    library = get_piece_all()
+    return render_template("library/view_library.html", pieces=library) 
 
 
 @bp.route("/add", methods=["GET", "POST"])
@@ -55,12 +50,13 @@ def add_piece():
     if request.method == "POST":
         piece_data = {
             "title": request.form["title"],
+            "composer": request.form["composer"],
             "instrumentation": request.form["instrumentation"],
             "duration": request.form["duration"],
         }
 
         #  CHANGE THIS!!!!!!! PORT TOO
-        response = requests.post("http://127.0.0.1:8000/library/", json=piece_data)
+        response = requests.post("http://127.0.0.1:8127/library/", json=piece_data)
         print()
         print(response)
         print()
@@ -86,25 +82,26 @@ def update_piece(piece_id):
     if request.method == "POST":
         piece_data = {
             "title": request.form["title"],
+            "composer": request.form["composer"],
             "instrumentation": request.form["instrumentation"],
             "duration": request.form["duration"],
         }
         #  CHANGE THIS !!!!!!
         response = requests.put(
-            f"http://127.0.0.1:8000/library/{piece_id}", json=piece_data
+            f"http://127.0.0.1:8127/library/{piece_id}", json=piece_data
         )
         if response.status_code == 200:
             flash("Piece updated successfully.")
-            return redirect(url_for("library.view_library.html"))
+            return redirect(url_for("library.view_library"))
 
         elif response.status_code == 400:
             flash(response.json()["detail"])
         else:
             flash("Failed to update piece.")
 
-    # piece = get_piece_id(piece_id)
+    piece = get_piece_id(piece_id)
     
-    return render_template("piece/edit_piece.html") # piece = piece
+    return render_template("library/edit_piece.html", piece=piece) 
 
 
 @bp.route("/delete/<int:piece_id>", methods=["POST"])
@@ -115,8 +112,8 @@ def delete_piece(piece_id):
     if "user_id" not in session:
         return redirect(url_for("index.login"))
   
-    if request.form.get("confirm") == "yes":
-        response = requests.delete(f"http://127.0.0.1:8000/library/{piece_id}")
+    if request.method == 'POST':
+        response = requests.delete(f"http://127.0.0.1:8127/library/{piece_id}")
         if response.status_code == 200:
             flash("Piece deleted successfully.")
         else:
@@ -140,7 +137,7 @@ def get_piece_all():
     return all pieces from the DB
     """
     try:
-        response = requests.get("http://127.0.0.1:8000/library/")
+        response = requests.get("http://127.0.0.1:8127/library/")
         response.raise_for_status()
         return response.json()
     except requests.RequestException:
@@ -152,7 +149,7 @@ def get_piece_id(piece_id):
     return piece by id from DB
     """
     try:
-        response = requests.get(f"http://127.0.0.1:8000/library/{piece_id}")
+        response = requests.get(f"http://127.0.0.1:8127/library/{piece_id}")
         response.raise_for_status()
         return response.json()
     except requests.RequestException:

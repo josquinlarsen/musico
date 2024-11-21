@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Weather{% endblock %}
+
+{% block content %}
+<main>
+    <h2>Weather</h2>
+    <div class="page_buttons">
+        <a href="{{ url_for('users.home') }}">Home</a>
+    </div>
+    <p>Current Weather</p>
+    {% for item in weather%}
+    <p>{{ item.temperature }}</p>
+    {% for message in item.messages%}
+    <p> {{ message }}</p>
+    {% endfor %}
+    {% endfor %}
+    
+</main>
+{% endblock %}

@@ -4,7 +4,10 @@
 
 {% block content %}
 <main>
-<h1>Welcome, {{ user.username }}!</h1>
+<h2>Welcome, {{ user.username }}!</h2>
+    <div class="page_buttons">
+        <a href="{{ url_for('weather.index') }}">Get Weather!</a>
+    </div>
     <div>
         <p> Choose a menu item from the top right to get started. </p>
     </div>
