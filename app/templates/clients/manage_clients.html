@@ -23,7 +23,11 @@
             <th>Event Address</th>
             <th>Event City</th>
             <th>Event State</th>
-            <th>Event Date</th>
+            <th>
+                <a href="{{ url_for('clients.sort_dates', direction='asc') }}" method="GET">^</a>
+                Event Date
+                <a href="{{ url_for('clients.sort_dates', direction='desc') }}" method="GET">⌄</a>
+            </th>
             <th>Actions</th>
         </tr>
     </thead>

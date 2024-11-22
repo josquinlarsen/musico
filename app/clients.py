@@ -39,6 +39,18 @@ def manage_clients():
     return render_template("clients/manage_clients.html", clients=clients)
 
 
+@bp.route("/sort/<direction>", methods=["GET", "POST"])
+def sort_dates(direction):
+    """
+    Router to get sorted clients by date from microservice
+    """
+    if "user_id" not in session:
+        return redirect(url_for("index.login"))
+
+    sorted_clients = sort_by_date(direction)
+    return render_template("clients/manage_clients.html", clients=sorted_clients)
+
+
 @bp.route("/roster")
 def view_clients():
     """
@@ -152,3 +164,13 @@ def get_client(client_id):
         return response.json()
     except requests.RequestException:
         return None
+
+
+def sort_by_date(direction):
+    try:
+        response = requests.get(f"http://127.0.0.1:8000/client/{direction}")
+        response.raise_for_status()
+        return response.json()
+    except requests.RequestException:
+        return None
+
