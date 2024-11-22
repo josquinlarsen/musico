@@ -4,11 +4,13 @@
 
 {% block content %}
 <main>
-
+    <div class="mini_nav">
+        <h2>Edit Piece</h2>
     <div class="page_buttons">
         <a href="{{ url_for('library.index') }}">Library Home</a>
     </div>
-    <h1>Edit Piece</h1>
+</div>
+    
     <form method="POST">
         <fieldset>
             <label for="title">Title:</label>

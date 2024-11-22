@@ -4,14 +4,15 @@
 
 {% block content %}
 <main>
-    <h1>Clients</h1>
+    <div class="mini_nav">
+    <h2>Clients</h2>
 
     <div class="page_buttons">
         <span class="tooltip_left" data-text="View Roster to avoid making unwanted changes.">
             <a href="{{ url_for('clients.view_clients') }}" class="page_buttons">Roster</a>
         </span>
     </div>
-
+    </div>
 <table>
     <caption>Client Roster</caption>
     <thead>
