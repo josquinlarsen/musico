@@ -10,6 +10,7 @@
     </div>
 
     <p>Insert your 5 digit zipcode to return the current weather conditions.</p>
+    <div class="container">
     <form method="POST">
        <fieldset>
             <label for="zipcode">Zipcode:</label>
@@ -18,17 +19,6 @@
             <button type="submit">Search</button>
        </fieldset> 
     </form>
-    <div>
-        <p>Current Weather</p>
-        <pre>{{ weather }}</pre>
-        {% for item in weather%}
-        <p>{{ item.temperature }}</p>
-        {% for message in item.messages%}
-        <p> {{ message }}</p>
-        {% endfor %}
-        {% endfor %}
     </div>
-
-
 </main>
 {% endblock %}

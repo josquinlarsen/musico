@@ -11,38 +11,50 @@ from flask import (
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from models import User
-import requests
+import requests, json
 
-bp = Blueprint('weather', __name__)
+bp = Blueprint("weather", __name__)
 
-@bp.route('/', methods=['GET', 'POST'])
+
+@bp.route("/", methods=["GET", "POST"])
 def index():
     """
     Weather home page
     """
     if "user_id" not in session:
         return redirect(url_for("index.login"))
-    
-    if request.method == 'POST':
 
-        zipcode = request.form['zipcode']
+    if request.method == "POST":
+
+        zipcode = request.form["zipcode"]
         response = requests.get(f"http://127.0.0.1:8227/weather/{zipcode}")
-        print(response.json())
-        weather = response.json()
-        print(weather)
-        if response.status_code == 200: 
+
+        weather_data = format_json(response.json())
+
+        if response.status_code == 200:
             flash(f"Success!")
-            return render_template("weather/get_weather.html", weather=weather)
+            return render_template("weather/display_weather.html", weather=weather_data)
         elif response.status_code == 400:
             flash(response.json()["detail"])
         else:
             flash("Failed to get weather.")
 
-
     return render_template("weather/get_weather.html")
 
 
-def get_current_weather(zipcode:str):
+def format_json(weather_json):
+    """
+    Format json for display
+    """
+    weather_data = []
+    weather_data.append(weather_json["temperature"])
+    for item in weather_json["messages"]:
+        weather_data.append(item["message"])
+
+    return weather_data
+
+
+def get_current_weather(zipcode: str):
     """
     Takes zipcode and returns microservice weather data
     """
@@ -54,4 +66,3 @@ def get_current_weather(zipcode:str):
         return weather
     except requests.RequestException:
         return None
-        

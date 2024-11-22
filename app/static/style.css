@@ -57,12 +57,21 @@
   font-weight: 700;
   }
 
-  .mini_nav {
-    /* display:flex;
-    flex-wrap: wrap; */
-    justify-content: right;
+  .mini_nav div{
+
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     height:50px;
+    width:100%;
+  }
+
+  .weather_block {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 1% 15%;
   }
 
   .page_buttons a:hover {

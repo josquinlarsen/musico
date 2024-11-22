@@ -4,17 +4,16 @@
 
 {% block content %}
 <main>
-    <h2>Weather</h2>
+    
+    <h2>Current Weather</h2>
     <div class="page_buttons">
         <a href="{{ url_for('users.home') }}">Home</a>
     </div>
-    <p>Current Weather</p>
-    {% for item in weather%}
-    <p>{{ item.temperature }}</p>
-    {% for message in item.messages%}
-    <p> {{ message }}</p>
-    {% endfor %}
-    {% endfor %}
+    <div class="weather_block">
+        <p>Current temperature: {{ weather[0] }}&deg;F <br>
+        {{ weather[1] }} <br>
+        {{ weather[2] }} </p>
+    </div>
     
 </main>
 {% endblock %}
