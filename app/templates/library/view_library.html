@@ -16,7 +16,7 @@
             <caption>Music Library</caption>
             <thead>
                 <tr>
-                    <th>{{ add_button(url_for('library.add_piece'))}}
+                    <th>{{ add_button(url_for('library.add_piece'))}}</th>
                     <th>Title</th>
                     <th>Composer</th>
                     <th>Instrumentation</th>
@@ -40,6 +40,7 @@
                 {% endfor %}
             </tbody>
         </table>
+    </div>
         </main>
 {% endblock %}
  

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Event{% endblock %}
+
+{% block content %}
+<main>
+    <div class="mini_nav">
+        <h2>Add Event</h2>
+    <div class="page_buttons">
+        <a href="{{ url_for('event_calendar.index') }}">Calendar Home</a>
+    </div>
+</div>
+    
+    <form method="POST">
+        <fieldset>
+            <label for="date">Date:</label>
+            <input type="date" name="date" required>
+
+            <label for="client">Client:</label>
+            <input type="text" name="client">
+            
+            <label for="location">Location:</label>
+            <input type="text" name="location" required>
+            
+            <label for="duration">Duration:</label>
+            <input type="text" name="duration">
+            
+            <button type="submit">Add</button>
+        </fieldset>
+    </form>
+
+</main>
+{% endblock %}

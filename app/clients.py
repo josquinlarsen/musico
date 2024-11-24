@@ -23,7 +23,7 @@ def clients():
     """
     if "user_id" not in session:
         return redirect(url_for("index.login"))
-    # clients = get_clients()
+
     return render_template("clients/clients.html")
 
 
