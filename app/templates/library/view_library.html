@@ -4,18 +4,21 @@
 
 {% block content %}
 <main>
-<h1>Music Library</h1>
+    <div class="mini_nav">
+<h2>Music Library</h2>
     <div class="page_buttons">
         <a href="{{ url_for('library.index') }}">Library Home</a>
     </div>
+</div>
 <div class="container">
     <div>
         <table>
-            <caption>Client Roster</caption>
+            <caption>Music Library</caption>
             <thead>
                 <tr>
                     <th>{{ add_button(url_for('library.add_piece'))}}
                     <th>Title</th>
+                    <th>Composer</th>
                     <th>Instrumentation</th>
                     <th>Duration</th>
                     <th>Actions</th>
@@ -26,7 +29,8 @@
                     <tr>
                         <td></td>
                         <td>{{ piece.title }}</td>
-                        <td>{{piece.instrumentation }}</td>
+                        <td>{{ piece.composer | default('---', true) }}</td>
+                        <td>{{ piece.instrumentation }}</td>
                         <td>{{ piece.duration| default('---', true) }}</td>
                         <td>
                              {{ edit_button(piece.title, url_for('library.update_piece', piece_id=piece.id)) }}

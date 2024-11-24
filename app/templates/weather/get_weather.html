@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Weather{% endblock %}
+
+{% block content %}
+<main>
+    <div class="mini_nav">
+    <h2>Weather</h2>
+    <div class="page_buttons">
+        <a href="{{ url_for('users.home') }}">Home</a>
+    </div>
+</div>
+    <p>Insert a 5 digit zipcode to return the current weather conditions.</p>
+    <div class="container">
+    <form method="POST">
+       <fieldset>
+            <label for="zipcode">Zipcode:</label>
+            <input type="text" name="zipcode" required>
+
+            <button type="submit">Search</button>
+       </fieldset> 
+    </form>
+    </div>
+</main>
+{% endblock %}

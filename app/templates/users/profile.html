@@ -4,11 +4,13 @@
 
 {% block content %}
 <main>
-<h1>{{user.username}}'s Profile</h1>
+    <div class="mini_nav">
+<h2>{{user.username}}'s Profile</h2>
 <div class="page_buttons">
     <a href="{{ url_for('users.update') }}">Update Profile</a>
 </div>
-<table>
+</div>
+<table class="vertical_table">
     <tr>
         <th>Username: </th>
         <td>{{user.username}}</td>

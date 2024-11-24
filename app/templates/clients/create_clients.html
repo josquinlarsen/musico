@@ -4,12 +4,14 @@
 
 {% block content %}
 <main>
-
+    <div class="mini_nav">
+        <h2>Create Client</h2>
     <div class="page_buttons">
         <a href="{{ url_for('clients.manage_clients') }}">Manage Clients</a>
         <a href="{{ url_for('clients.view_clients') }}">Roster</a>
     </div>
-    <h1>Create Client</h1>
+    </div>
+    
     <form method="POST">
         <fieldset>
             <label for="name">Name:</label>

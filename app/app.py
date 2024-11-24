@@ -13,7 +13,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from models import db
 import requests
 
-import clients, users, index, library
+import clients, users, index, library, weather
 
 
 app = Flask(__name__)
@@ -27,6 +27,7 @@ app.register_blueprint(index.bp)
 app.register_blueprint(clients.bp, url_prefix="/clients")
 app.register_blueprint(users.bp, url_prefix="/users")
 app.register_blueprint(library.bp, url_prefix="/library")
+app.register_blueprint(weather.bp, url_prefix="/weather")
 
 # Create the database
 with app.app_context():
