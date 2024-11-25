@@ -34,8 +34,14 @@
                     {% if (start_weekday + day - 1) % 7 == 0 and day != 1 %}
                         </tr><tr>
                     {% endif %}
+                    {% set date = year ~ "-" ~ "%02d" % month ~ "-" ~ "%02d" % day %}
                     <td> {{ day }}
-                        <p>{{ event | default('---', true)}}</p>
+                        {% for event in events %}
+                        {% if date == event['date'] %}
+                        <br>
+                        <a href="{{ url_for('event_calendar.update_event', event_id=event['id'])}}"> {{ event['event_name'] | default("Event", true) }}</a>
+                        {% endif %}
+                        {% endfor %}
                     </td>
                     {% endfor %}
                         </tr>
