@@ -38,6 +38,9 @@ def view_library():
     library = get_piece_all()
     return render_template("library/view_library.html", pieces=library) 
 
+# ----------------------------------------------------------------------------------
+#   Library microservice routers
+# ----------------------------------------------------------------------------------
 
 @bp.route("/add", methods=["GET", "POST"])
 def add_piece():
@@ -131,6 +134,9 @@ def generate_setlist():
     """
     return "This is a temporary set list!"
 
+# ----------------------------------------------------------------------------------
+#   Utilities
+# ----------------------------------------------------------------------------------
 
 def get_piece_all():
     """

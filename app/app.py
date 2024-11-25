@@ -28,7 +28,7 @@ app.register_blueprint(clients.bp, url_prefix="/clients")
 app.register_blueprint(users.bp, url_prefix="/users")
 app.register_blueprint(library.bp, url_prefix="/library")
 app.register_blueprint(weather.bp, url_prefix="/weather")
-app.register_blueprint(event_calendar.bp, url_prefix="/calendar")
+app.register_blueprint(event_calendar.bp, url_prefix="/event_calendar")
 
 # Create the database
 with app.app_context():

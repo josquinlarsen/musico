@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Event Info {% endblock %}
+
+{% block content %}
+
+<main>
+    <div class="mini_nav">
+        <h2>Event Information</h2>
+        <div class="page_buttons">
+            <a href="{{ url_for('event_calendar.index') }}">Calendar Home</a>
+        </div>
+    </div>
+    <div class="container">
+
+    <table class="vertical_table">
+        <tr>
+            <th>Actions:</th>
+            <td>
+                <!-- Button to edit the event -->
+                {{ edit_button(event.event_name, url_for('event_calendar.update_event', event_id=event.id)) }}
+                <!-- Button to delete the event -->
+                {{ delete_button(event.event_name, url_for('event_calendar.delete_event', event_id=event.id)) }}
+            </td>
+        </tr>
+        <tr>
+            <th>Date: </th>
+            <td>{{event.date}}</td>
+        <tr>
+            <th>Event: </th>
+            <td>{{ event.event_name }}</td>
+        </tr>
+        <tr>
+            <th>Location: </th>
+            <td>{{event.location}}</td>
+        </tr>
+        <tr>
+            <th>Duration: </th>
+            <td>{{event.duration}}</td>
+        </tr>
+        <tr>
+            <th>Notes: </th>
+            <td>{{event.notes}}</td>
+        </tr>
+
+    </table>
+</div>
+</main>
+
+{% endblock %}

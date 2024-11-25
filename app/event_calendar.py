@@ -143,6 +143,17 @@ def delete_event(event_id):
         flash("Delete operation cancelled.")
     return redirect(url_for("event_calendar.view_calendar"))
 
+@bp.route("/detail/<int:event_id>", methods=["GET", "POST"])
+def event_detail(event_id):
+    """
+    Event detail router for update/delete
+    """
+    if "user_id" not in session:
+        return redirect(url_for("index.login"))
+    
+    event = get_event_id(event_id)
+    return render_template("calendar/event_detail.html", event=event)
+
 
 # ----------------------------------------------------------------------------------
 #   Utilities

@@ -39,7 +39,7 @@
                         {% for event in events %}
                         {% if date == event['date'] %}
                         <br>
-                        <a href="{{ url_for('event_calendar.update_event', event_id=event['id'])}}"> {{ event['event_name'] | default("Event", true) }}</a>
+                        <a href="{{ url_for('event_calendar.event_detail', event_id=event['id'])}}"> {{ event['event_name'] | default("Event", true) }}</a>
                         {% endif %}
                         {% endfor %}
                     </td>

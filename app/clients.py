@@ -61,6 +61,9 @@ def view_clients():
     clients = get_clients()
     return render_template("clients/view_clients.html", clients=clients)
 
+# ----------------------------------------------------------------------------------
+#   Clients microservice routers
+# ----------------------------------------------------------------------------------
 
 @bp.route("/new", methods=["GET", "POST"])
 def create_client():
@@ -147,6 +150,9 @@ def delete_client(client_id):
         flash("Delete operation cancelled.")
     return redirect(url_for("clients.manage_clients"))
 
+# ----------------------------------------------------------------------------------
+#   Utilities
+# ----------------------------------------------------------------------------------
 
 def get_clients():
     try:
