@@ -84,9 +84,6 @@ def create_client():
         }
 
         response = requests.post("http://127.0.0.1:8000/client/", json=client_data)
-        print()
-        print(response)
-        print()
         if response.status_code == 200:
             flash("Client created successfully.")
             return redirect(url_for("clients.manage_clients"))

@@ -58,11 +58,7 @@ def add_piece():
             "duration": request.form["duration"],
         }
 
-        #  CHANGE THIS!!!!!!! PORT TOO
         response = requests.post("http://127.0.0.1:8127/library/", json=piece_data)
-        print()
-        print(response)
-        print()
         if response.status_code == 200:
             flash(f"{request.form['title']} successfully added.")
             return redirect(url_for("library.view_library"))
