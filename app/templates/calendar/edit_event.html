@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
-{% block title %}Add Event{% endblock %}
+{% block title %}Update Event{% endblock %}
 
 {% block content %}
 <main>
     <div class="mini_nav">
-        <h2>Add Event</h2>
+        <h2>Update Event</h2>
     <div class="page_buttons">
         <a href="{{ url_for('event_calendar.index') }}">Calendar Home</a>
     </div>
@@ -14,19 +14,19 @@
     <form method="POST">
         <fieldset>
             <label for="date">Date:</label>
-            <input type="date" name="date" required>
+            <input type="date" name="date" value="{{ event.date }}" required>
 
             <label for="event_name">Event:</label>
-            <input type="text" name="event_name" required>
+            <input type="text" name="event_name" value="{{ event.event_name }}" required>
             
             <label for="location">Location:</label>
-            <input type="text" name="location" required>
+            <input type="text" name="location" value="{{ event.location }}" required>
             
             <label for="duration">Duration:</label>
-            <input type="text" name="duration">
+            <input type="text" name="duration" value="{{ event.duration }}">
 
             <label for="notes">Notes:</label>
-            <input type="text" name="notes">
+            <input type="text" name="notes" value="{{ event.notes }}">
             
             <button type="submit">Add</button>
         </fieldset>

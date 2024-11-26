@@ -23,7 +23,7 @@ def clients():
     """
     if "user_id" not in session:
         return redirect(url_for("index.login"))
-    # clients = get_clients()
+
     return render_template("clients/clients.html")
 
 
@@ -61,6 +61,9 @@ def view_clients():
     clients = get_clients()
     return render_template("clients/view_clients.html", clients=clients)
 
+# ----------------------------------------------------------------------------------
+#   Clients microservice routers
+# ----------------------------------------------------------------------------------
 
 @bp.route("/new", methods=["GET", "POST"])
 def create_client():
@@ -147,8 +150,14 @@ def delete_client(client_id):
         flash("Delete operation cancelled.")
     return redirect(url_for("clients.manage_clients"))
 
+# ----------------------------------------------------------------------------------
+#   Utilities
+# ----------------------------------------------------------------------------------
 
 def get_clients():
+    """
+    return all clients
+    """
     try:
         response = requests.get("http://127.0.0.1:8000/client/")
         response.raise_for_status()
@@ -158,6 +167,9 @@ def get_clients():
 
 
 def get_client(client_id):
+    """
+    return client by id
+    """
     try:
         response = requests.get(f"http://127.0.0.1:8000/client/{client_id}")
         response.raise_for_status()
@@ -167,6 +179,9 @@ def get_client(client_id):
 
 
 def sort_by_date(direction):
+    """
+    sort clients by event date by given direction (asc, desc)
+    """
     try:
         response = requests.get(f"http://127.0.0.1:8000/client/{direction}")
         response.raise_for_status()

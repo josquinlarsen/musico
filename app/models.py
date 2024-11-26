@@ -19,4 +19,10 @@ class Piece(db.Model):
     title = db.Column(db.String(180), nullable=False)
     instrumentation = db.Column(db.String(180), nullable=False)
     duration = db.Column(db.String(50), nullable=True)
+
+
+# Calendar Event model
+class Event(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
     
+

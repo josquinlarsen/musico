@@ -25,10 +25,10 @@
     min-height: 80vh;
     margin:1%; 
   }
-  div {
+  /* div {
     display:inline-block;
     padding: 0.5%;
-  }
+  } */
   .homediv { max-width: 50%;}
 
   header {
@@ -168,6 +168,18 @@
   h1 {font-size:175%;}
 
   h2 {color:var(--blue);}
+
+  h3 {color:var(--purple)}
+
+  article{
+    font-family: 'Trebuchet MS', sans-serif;
+    color:var(--black);
+    background-color: var(--lightblue);
+    border: 1.5px solid var(--slate);
+    border-radius: 5px;
+    padding:5px 25px;
+    margin-left: 20%;
+    }
 
   footer {
     background:linear-gradient(var(--salt), var(--lavender));
