@@ -155,6 +155,9 @@ def delete_client(client_id):
 # ----------------------------------------------------------------------------------
 
 def get_clients():
+    """
+    return all clients
+    """
     try:
         response = requests.get("http://127.0.0.1:8000/client/")
         response.raise_for_status()
@@ -164,6 +167,9 @@ def get_clients():
 
 
 def get_client(client_id):
+    """
+    return client by id
+    """
     try:
         response = requests.get(f"http://127.0.0.1:8000/client/{client_id}")
         response.raise_for_status()
@@ -173,6 +179,9 @@ def get_client(client_id):
 
 
 def sort_by_date(direction):
+    """
+    sort clients by event date by given direction (asc, desc)
+    """
     try:
         response = requests.get(f"http://127.0.0.1:8000/client/{direction}")
         response.raise_for_status()

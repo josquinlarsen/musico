@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Set List{% endblock %}
+
+{% block content %}
+<main>
+    <div class="mini_nav">
+    <h2>Set List</h2>
+    <div class="page_buttons">
+        <a href="{{ url_for('library.index') }}" title="Library Home">Library Home</a>
+        <a href="{{ url_for('library.generate') }}" titl="Generate Again">Generate Another</a>
+    </div>
+    </div>
+    <div class="container">
+        <h3>Here are the pieces from your library:</h3>
+  
+        <article>
+        {% if pieces %}
+        {% for piece in pieces %}
+        <p>{{ piece.title }} by {{ piece.composer | default("Unknown", true) }} </p>
+        {% endfor %}
+        {% endif %}
+        </article>
+    
+    </div>
+</main>
+{% endblock %}
