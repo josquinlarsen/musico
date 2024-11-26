@@ -10,27 +10,27 @@
         <a href="{{ url_for('event_calendar.index') }}">Calendar Home</a>
     </div>
 </div>
-    
-    <form method="POST">
-        <fieldset>
-            <label for="date">Date:</label>
-            <input type="date" name="date" value="{{ event.date }}" required>
+    <div class="container">
+        <form method="POST">
+            <fieldset>
+                <label for="date">Date:</label>
+                <input type="date" name="date" value="{{ event.date }}" required>
 
-            <label for="event_name">Event:</label>
-            <input type="text" name="event_name" value="{{ event.event_name }}" required>
-            
-            <label for="location">Location:</label>
-            <input type="text" name="location" value="{{ event.location }}" required>
-            
-            <label for="duration">Duration:</label>
-            <input type="text" name="duration" value="{{ event.duration }}">
+                <label for="event_name">Event:</label>
+                <input type="text" name="event_name" value="{{ event.event_name }}" required>
+                
+                <label for="location">Location:</label>
+                <input type="text" name="location" value="{{ event.location }}" required>
+                
+                <label for="duration">Duration:</label>
+                <input type="text" name="duration" value="{{ event.duration }}">
 
-            <label for="notes">Notes:</label>
-            <input type="text" name="notes" value="{{ event.notes }}">
-            
-            <button type="submit">Add</button>
-        </fieldset>
-    </form>
-
+                <label for="notes">Notes:</label>
+                <input type="text" name="notes" value="{{ event.notes }}">
+                
+                <button type="submit">Add</button>
+            </fieldset>
+        </form>
+    </div>
 </main>
 {% endblock %}

@@ -7,6 +7,8 @@
   --purple:     rgba(48, 25, 129);
   --lightblue:  rgba(206,215,242);
   --blue:       rgba(83,104,166);
+  --red:        rgba(223,79,55);
+  --chili:      rgba(202,60,37);
   --green:      rgba(3,96,22);
   --mint:       rgba(143,247,167);
   --yellow:     rgba(247, 225, 160);
@@ -17,7 +19,7 @@
   body {      
   background-color: var(--salt);
   color:var(--slate);
-  font-family:"PT Sans", sans-serif; 
+  font-family:"Nunito Sans", sans-serif; 
   }
 
   main { 
@@ -34,7 +36,6 @@
   header {
   background: linear-gradient(var(--lavender), var(--yellow), var(--salt));
   color:var(--salt);
-  /* border-bottom: 2px solid var(--slate); */
   padding:2%;
   }
 
@@ -46,11 +47,37 @@
     justify-content: center;
   }
 
+  .client_container {
+    /* margin-left:5%; */
+    margin-right: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-end;
+    justify-content: center;
+  }
+
+  .toggle_button button{
+    color:var(--chili);
+    background-color: var(--salt);
+    text-decoration:none;
+    margin:none;
+    padding: 1% 10px;
+    border: 3px solid var(--chili);
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  button.client_container {
+    margin: none;
+    padding: 1% 10px;
+  }
+
+
   .navbar {
   color:var(--purple);
   width: 100%;
   height: 80px;
-  /* max-width: 1200px; */
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -76,22 +103,23 @@
   }
 
   .page_buttons a:hover {
-    color:var(--green);
-    background-color: var(--mint);
+    color:var(--salt);
+    background-color: var(--chili);
     border: 1.5px solid var(--salt);
-    border-radius: 5px;
     font-size:calc(1.1rem);
   }
 
   .page_buttons a{
-    color:var(--green);
+    color:var(--chili);
+    background-color: var(--salt);
     text-decoration:none;
-    padding: 3px 10px 5px 10px;
-    border: 1px solid var(--green);
+    padding: 7px 30px;
+    border: 3px solid var(--chili);
+    border-radius: 25px;
+    font-weight: 700;
   }
   .page_buttons {
-    margin:1%;
-    /* float:right; */
+    margin:2%;
   }
 
   button.ignore{ 
@@ -144,7 +172,8 @@
     display:block;
   }
 
-  a:link {color:var(--mint);}
+  a:link {color:var(--chili);}
+
   nav {
       display:flex;
       flex-wrap: wrap;
@@ -155,13 +184,13 @@
   nav a {
     color:var(--blue);
     text-decoration:none;
-    padding: 3px 10px 5px 10px;
+    padding: 3px 12px 5px 12px;
   }
   nav a:hover {
     color:var(--blue);
-    background-color: var(--mint);
-    border: 1.5px solid var(--purple);
-    border-radius: 5px;
+    background-color: var(--salt);
+    border: 2px solid var(--purple);
+    border-radius: 25px;
     font-size:calc(1.1rem);
   }
 
@@ -181,6 +210,21 @@
     margin-left: 20%;
     }
 
+  a.event_detail {
+    text-decoration: none;
+    color: var(--blue);
+    border: 2px solid var(--blue);
+    border-radius: 25px;
+    padding: 2px 10px;
+    font-weight: 600;
+  }
+  a:hover.event_detail {
+    color:var(--salt);
+    background-color: var(--blue);
+    border-color: var(--lavender);
+  }
+  
+
   footer {
     background:linear-gradient(var(--salt), var(--lavender));
     bottom:0;
@@ -195,7 +239,7 @@
   display:flex;
   flex-wrap: wrap;
   justify-content: right;
-  font-family:"PT-Sans", sans-serif;
+  font-family:"Nunito Sans", sans-serif;
   font-size:95%;
   }
 
@@ -213,19 +257,20 @@
   content:"*";
   color:var(--yellow);
   }
+
   button {
-  font-family:"PT-Sans", sans-serif;
-  background-color: var(--green);
-  border: 1.5px solid var(--salt);
-  border-color:var(--black);
-  border-radius: 5px;
+  font-family:"Nunito Sans", sans-serif;
+  background-color: var(--red);
+  border: 3px solid var(--chili);
+  border-radius: 25px;
   color: var(--salt);
-  font-size:calc(1.1rem);
+  font-weight: 700;
+  font-size:1.2rem;
   margin:3% 1%;
-  padding:2% 15px;
-  /* float: right;  */
+  padding: 1% 15px;
   cursor: pointer;
   }
+
   textarea {
   font-family:"PT-Sans", sans-serif;
   border: 1.5px solid var(--black);
@@ -242,7 +287,7 @@
   font-size: 110%;
   width:450px;
   }
-  input[type="button"], button[type="button"], input[type="submit"] {
+  /* input[type="button"], button[type="button"], input[type="submit"] {
   border-radius:5px;
   background-color:var(--black);
   color:var(--salt);
@@ -254,39 +299,63 @@
   input[type="button"]:hover, button[type="button"]:hover, input[type="submit"]:hover {
   background-color:var(--salt);
   color:var(--black);
-  }
+  } */
 
   /* Table */
 
   .hidden {display:none;}
 
   table {
-      /* border-collapse:collapse; */
-      min-width:auto;
-      margin:1px auto;
+      width:850px;
+      margin:1% 2%;
       padding:1%;
     }
     caption {
-      background-color:var(--salt); 
-      border-bottom:3px solid var(--green); 
-      color:var(--green); 
-      font-weight:bold; 
+      border-bottom:1.5px solid var(--blue); 
+      color:var(--chili); 
+      font-weight:700; 
+      font-size: 1.05em;
       padding:1% 0; 
     }
     thead{
+      color:var(--black);
       text-align: center;
     }
-
+    
     tr td{
       text-align: center;
-      border-bottom: 1px dashed var(--mint);
       padding:1%;
-      margin:0 1%;
-    }
-    tr th{
-      background-color:var(--cream);
-      padding:0.5%;
-      min-width:7rem;
     }
 
-    td :last-of-type { min-width: 20px; } 
+    tr th{
+      padding:0.5%;
+    }
+
+    /* Calendar */
+   
+    table.calendar {
+      padding:1%;
+      min-height: 75vh;
+      border-left:1px solid var(--slate);
+      border-right:1px solid var(--slate);
+      border-bottom:1px solid var(--slate);
+    }
+    .calendar caption{
+      border:1px solid var(--slate); 
+      color:var(--purple); 
+      font-weight:bold; 
+      padding:1% 0; 
+    }
+    thead.calendar {
+      text-align: center;
+    }
+
+    .calendar tbody tr{
+      height: 130px;
+    }
+    .calendar tr td {
+      color:var(--black);
+      font-weight: 600;
+      border: 1px solid var(--slate);
+      margin:20px 2%;
+    }

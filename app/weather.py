@@ -32,8 +32,7 @@ def index():
         weather_data = format_json(response.json())
 
         if response.status_code == 200:
-            flash(f"Success!")
-            return render_template("weather/display_weather.html", weather=weather_data)
+            return render_template("weather/display_weather.html", zipcode=zipcode, weather=weather_data)
         elif response.status_code == 400:
             flash(response.json()["detail"])
         else:

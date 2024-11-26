@@ -36,11 +36,11 @@
         </tr>
         <tr>
             <th>Duration: </th>
-            <td>{{event.duration}}</td>
+            <td>{{event.duration | default('---', true)}}</td>
         </tr>
         <tr>
             <th>Notes: </th>
-            <td>{{event.notes}}</td>
+            <td>{{event.notes | default('---', true)}}</td>
         </tr>
 
     </table>

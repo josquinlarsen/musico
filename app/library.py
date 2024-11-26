@@ -36,11 +36,13 @@ def view_library():
         return redirect(url_for("index.login"))
 
     library = get_piece_all()
-    return render_template("library/view_library.html", pieces=library) 
+    return render_template("library/view_library.html", pieces=library)
+
 
 # ----------------------------------------------------------------------------------
 #   Library microservice routers
 # ----------------------------------------------------------------------------------
+
 
 @bp.route("/add", methods=["GET", "POST"])
 def add_piece():
@@ -99,8 +101,8 @@ def update_piece(piece_id):
             flash("Failed to update piece.")
 
     piece = get_piece_id(piece_id)
-    
-    return render_template("library/edit_piece.html", piece=piece) 
+
+    return render_template("library/edit_piece.html", piece=piece)
 
 
 @bp.route("/delete/<int:piece_id>", methods=["POST"])
@@ -110,8 +112,8 @@ def delete_piece(piece_id):
     """
     if "user_id" not in session:
         return redirect(url_for("index.login"))
-  
-    if request.method == 'POST':
+
+    if request.method == "POST":
         response = requests.delete(f"http://127.0.0.1:8127/library/{piece_id}")
         if response.status_code == 200:
             flash("Piece deleted successfully.")
@@ -122,6 +124,7 @@ def delete_piece(piece_id):
         flash("Delete operation cancelled.")
     return redirect(url_for("library.view_library"))
 
+
 @bp.route("/generate/", methods=["GET", "POST"])
 def generate():
     """
@@ -129,14 +132,16 @@ def generate():
     """
     if "user_id" not in session:
         return redirect(url_for("index.login"))
-    if request.method == 'GET':
+    if request.method == "GET":
         set_list = generate_random_setlist()
         return render_template("library/set_list.html", pieces=set_list)
     return render_template("library/set_list.html", pieces=None)
 
+
 # ----------------------------------------------------------------------------------
 #   Utilities
 # ----------------------------------------------------------------------------------
+
 
 def get_piece_all():
     """
@@ -160,6 +165,7 @@ def get_piece_id(piece_id):
         return response.json()
     except requests.RequestException:
         return None
+
 
 def generate_random_setlist():
     """
