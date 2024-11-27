@@ -36,23 +36,53 @@ def view_calendar(year, month):
     """
     display calendar with events
     """
-
+    if "user_id" not in session:
+        return redirect(url_for("index.login"))
     first_day = datetime(year, month, 1)
     days_in_month = (
         (datetime(year, month + 1, 1) - timedelta(days=1)).day if month != 12 else 31
     )
     start_weekday = first_day.weekday()
     
+    month_name = month_to_text(month)
     events = get_event_all()
     
     return render_template(
         "calendar/view_calendar.html",
+        month_name=month_name,
         year=year,
         month=month,
         days_in_month=days_in_month,
         start_weekday=start_weekday,
         events=events,
     )
+
+@bp.route("/change/<int:year>/<int:month>")
+def change_month(year, month):
+    
+    update_year, update_month = month_modulo(year, month)
+    print(update_year, update_month)
+    return view_calendar(update_year, update_month)
+
+    # first_day = datetime(update_year, update_month, 1)
+    # days_in_month = (
+    #     (datetime(update_year, update_month + 1, 1) - timedelta(days=1)).day if update_month != 12 else 31
+    # )
+    # start_weekday = first_day.weekday()
+    
+    # month_name = month_to_text(update_month)
+    # events = get_event_all()
+    
+    # return render_template(
+    #     "calendar/view_calendar.html",
+    #     month_name=month_name,
+    #     year=update_year,
+    #     month=update_month,
+    #     days_in_month=days_in_month,
+    #     start_weekday=start_weekday,
+    #     events=events,
+    # )
+
 
 
 # ----------------------------------------------------------------------------------
@@ -181,3 +211,25 @@ def get_event_id(event_id):
         return response.json()
     except requests.RequestException:
         return None
+
+
+def month_to_text(month):
+    """
+    Convert month number to text for display
+    """
+    month_dico = {1:'January', 2:'February', 3:'March', 4:'April',
+                  5:'May', 6:'June', 7:'July', 8:'August', 9:'September',
+                  10:'October', 11:'November', 12:'December'}
+    
+    return month_dico[month]
+
+
+def month_modulo(year, month):
+    """
+    returns month and accounts for wrap around
+    """
+    if month > 12:
+        return (year + 1), 1
+    if month < 1:
+        return (year - 1), 12
+    return year, month
