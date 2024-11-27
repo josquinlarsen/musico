@@ -30,7 +30,7 @@
   .homediv { max-width: 50%;}
 
   header {
-  background: linear-gradient(var(--lavender), var(--yellow), var(--salt));
+  /* background: linear-gradient(var(--lavender), var(--yellow), var(--salt)); */
   color:var(--salt);
   padding:2%;
   }
@@ -98,6 +98,8 @@
     margin: 1% 15%;
   }
 
+  .title { text-align: center; }
+
   .page_buttons a:hover {
     color:var(--salt);
     background-color: var(--chili);
@@ -118,7 +120,7 @@
     margin:2%;
   }
 
-  button.ignore{ 
+  button.ignore { 
     all: unset;
     cursor: pointer;}
 
@@ -178,13 +180,13 @@
       height:50px;
     }
   nav a {
-    color:var(--blue);
+    color:var(--purple);
     text-decoration:none;
     padding: 3px 12px 5px 12px;
   }
   nav a:hover {
-    color:var(--blue);
-    background-color: var(--salt);
+    color:var(--salt);
+    background-color: var(--purple);
     border: 2px solid var(--purple);
     border-radius: 25px;
     font-size:calc(1.1rem);
@@ -220,13 +222,14 @@
     border-color: var(--lavender);
   }
   
-
   footer {
-    background:linear-gradient(var(--salt), var(--lavender));
+    /* background:linear-gradient(var(--salt), var(--lavender)); */
     bottom:0;
     width: 100%;
     height: 80px;
+    color: var(--purple);
     text-align: center;
+    font-weight: 600;
   }
   
 
@@ -257,7 +260,7 @@
   form button {
   font-family:"Nunito Sans", sans-serif;
   background-color: var(--red);
-  border: 3px solid var(--chili);
+  border: 3px solid var(--red);
   border-radius: 25px;
   color: var(--salt);
   font-weight: 700;
@@ -318,7 +321,16 @@
     }
 
     /* Calendar */
-   
+    .day_style { 
+      align-items: center;
+      justify-content: space-between;
+      display: inline-flex;
+      flex-direction: column;
+      text-align: center;
+      font-weight: 600;
+    }
+
+
     table.calendar {
       padding:1%;
       min-height: 75vh;
@@ -328,22 +340,48 @@
     }
     .calendar caption{
       border:1px solid var(--slate); 
-      color:var(--purple); 
+      color:var(--blue); 
       font-weight:bold; 
       padding:1% 0; 
     }
+
+    .caption_btns {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 800px;
+    }
+
     thead.calendar {
       text-align: center;
     }
 
     .calendar tbody tr{
       height: 130px;
+      width: 150px; 
+
     }
     .calendar tr td {
       color:var(--black);
       font-weight: 600;
       border: 1px solid var(--slate);
       margin:20px 2%;
+      width: inherit;
+    }
+
+    /* vertical table */
+    table.vertical_table {
+      width: 600px;
+    }
+    .vertical_table {
+      text-align: right;
+    }
+    .vertical_table div {
+      display: inline-flex;
+    }
+
+    .vertical_table td {
+      text-align: left;
     }
 
     /* google icons */

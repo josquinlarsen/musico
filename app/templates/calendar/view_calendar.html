@@ -14,7 +14,22 @@
         </div>
         <div>
             <table class="calendar">
-                <caption>{{ month }} {{ year}} </caption>
+                <caption>
+                    <div class="caption_btns">
+                        <div><a class="ignore" href="{{ url_for('event_calendar.change_month', year=year, month=month-1)}}" title="previous month">
+                            <span class="material-symbols-outlined">chevron_left</span>
+                        </a></div>
+                    <div>{{ month_name }} {{ year}}
+                        <a class="ignore" href="{{ url_for('event_calendar.index')}}" title="today"><span 
+                            class="material-symbols-outlined">today</span>
+                        </a>
+                    </div>
+                    <div><a class="ignore" href="{{ url_for('event_calendar.change_month', year=year, month=month+1)}}" title="next month">
+                        <span class="material-symbols-outlined">chevron_right</span>
+                    </a></div>
+                   
+                    </div>
+                </caption>
                 <thead>
                     <tr>
                         <th>Monday</th>
@@ -33,14 +48,16 @@
                     {% endfor %}
                     {% for day in range(1, days_in_month + 1) %}
                     {% if (start_weekday + day - 1) % 7 == 0 and day != 1 %}
-                        </tr><tr>
+                    </tr>
                     {% endif %}
                     {% set date = year ~ "-" ~ "%02d" % month ~ "-" ~ "%02d" % day %}
-                    <td> {{ day }}
+                    <td> <div class="day_style"><p>{{ day }}</p></div>
                         {% for event in events %}
                         {% if date == event['date'] %}
-                        <br>
-                        <a class="event_detail" href="{{ url_for('event_calendar.event_detail', event_id=event['id'])}}"> {{ event['event_name'] | default("Event", true) }}</a>
+                        <div>
+                        <a class="event_detail" 
+                        href="{{ url_for('event_calendar.event_detail', event_id=event['id'])}}"> {{ event['event_name'] | default("Event", true) }}</a>
+                        </div>
                         {% endif %}
                         {% endfor %}
                     </td>
