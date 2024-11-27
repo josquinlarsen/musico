@@ -5,51 +5,57 @@
 {% block content %}
 <main>
     <div class="mini_nav">
-    <h2>Clients</h2>
-
-    <div class="page_buttons">
-        <span class="tooltip_left" data-text="View Roster to avoid making unwanted changes.">
-            <a href="{{ url_for('clients.view_clients') }}" class="page_buttons">Roster</a>
-        </span>
+        <h2>Clients</h2>
+        <div class="page_buttons">
+            <span class="tooltip_left" data-text="View Roster to avoid making unwanted changes.">
+                <a href="{{ url_for('clients.view_clients') }}" class="page_buttons">Roster</a>
+            </span>
+        </div>
+    </div>
+    <div class="client_container">
+        <div>
+            {{ add_button(url_for('clients.create_client'))}}
+        </div>
+        <div>
+        <table>
+            <caption>Client Roster</caption>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Event Address</th>
+                    <th>Event City</th>
+                    <th>Event State</th>
+                    <th>
+                        <a href="{{ url_for('clients.sort_dates', direction='asc') }}" method="GET" title="sort date ascending"><span 
+                            class="material-symbols-outlined">arrow_upward</span></a>
+                        Event Date
+                        <a href="{{ url_for('clients.sort_dates', direction='desc') }}" method="GET" title="sort date descending"><span 
+                            class="material-symbols-outlined">arrow_downward</span></a>
+                    </th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for client in clients %}
+                    <tr>
+                        <td>{{ client.name }}</td>
+                        <td>{{ client.email }}</td>
+                        <td>{{ client.address | default('---', true) }}</td>
+                        <td>{{ client.city | default('---', true) }}</td>
+                        <td>{{ client.state }}</td>
+                        <td>{{ client.date }}</td>
+                        <td>
+                            <!-- Button to edit the client -->
+                            {{ edit_button(client.id, url_for('clients.update_client', client_id=client.id)) }}
+                            <!-- Button to delete the client -->
+                            {{ delete_button(client.name, url_for('clients.delete_client', client_id=client.id)) }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
     </div>
-<table>
-    <caption>Client Roster</caption>
-    <thead>
-        <tr>
-            <th>{{ add_button(url_for('clients.create_client'))}}
-            <th>Name</th>
-            <th>Email</th>
-            <th>Event Address</th>
-            <th>Event City</th>
-            <th>Event State</th>
-            <th>
-                <a href="{{ url_for('clients.sort_dates', direction='asc') }}" method="GET">^</a>
-                Event Date
-                <a href="{{ url_for('clients.sort_dates', direction='desc') }}" method="GET">⌄</a>
-            </th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for client in clients %}
-            <tr>
-                <td></td>
-                <td>{{ client.name }}</td>
-                <td>{{ client.email }}</td>
-                <td>{{ client.address | default('---', true) }}</td>
-                <td>{{ client.city | default('---', true) }}</td>
-                <td>{{ client.state }}</td>
-                <td>{{ client.date }}</td>
-                <td>
-                    <!-- Button to edit the client -->
-                     {{ edit_button(client.name, url_for('clients.update_client', client_id=client.id)) }}
-                    <!-- Button to delete the client -->
-                     {{ delete_button(client.name, url_for('clients.delete_client', client_id=client.id)) }}
-                </td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
 </main>
 {% endblock %}

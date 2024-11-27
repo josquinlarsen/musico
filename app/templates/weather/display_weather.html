@@ -5,15 +5,20 @@
 {% block content %}
 <main>
     <div class="mini_nav">
-    <h2>Current Weather</h2>
+    <h2>Current Weather </h2>
     <div class="page_buttons">
-        <a href="{{ url_for('users.home') }}">Home</a>
+        <a href="{{ url_for('users.home') }}" title="User home">Home</a>
+        <a href="{{ url_for('weather.index' )}}" title="get weather">Get Weather</a>
     </div>
     </div>
     <div class="weather_block">
-        <p>Current temperature: {{ weather[0] }}&deg;F <br>
-        {{ weather[1] }} <br>
-        {{ weather[2] }} </p>
+        <article>
+            <p>Conditions for <strong>{{ zipcode }} </strong></p>
+            <p>Current temperature: {{ weather[0] }}&deg;F <br>
+            <br>
+            {{ weather[1] }} <br>
+            {{ weather[2] }} </p>
+        </article>
     </div>
     
 </main>

@@ -27,8 +27,8 @@ def index():
 
     today = datetime.today()
     year, month = today.year, today.month
-
-    return redirect(url_for("event_calendar.view_calendar", year=year, month=month))
+    events = get_event_all()
+    return redirect(url_for("event_calendar.view_calendar", year=year, month=month, events=events))
 
 
 @bp.route("/<int:year>/<int:month>")
@@ -74,12 +74,10 @@ def add_event():
             "event_name": request.form["event_name"],
             "location": request.form["location"],
             "duration": request.form["duration"],
+            "notes": request.form["notes"],
         }
 
         response = requests.post("http://127.0.0.1:8327/calendar/", json=event_data)
-        print()
-        print(response)
-        print()
         if response.status_code == 200:
             flash(f"Event successfully added.")
             return redirect(url_for("event_calendar.index"))
@@ -105,6 +103,7 @@ def update_event(event_id):
             "event_name": request.form["event_name"],
             "location": request.form["location"],
             "duration": request.form["duration"],
+            "notes": request.form["notes"],
         }
 
         response = requests.put(
@@ -112,7 +111,7 @@ def update_event(event_id):
         )
         if response.status_code == 200:
             flash("Event updated successfully.")
-            return redirect(url_for("event_calendar.view_calendar"))
+            return redirect(url_for("event_calendar.index"))
 
         elif response.status_code == 400:
             flash(response.json()["detail"])

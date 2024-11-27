@@ -10,7 +10,7 @@
         <a href="{{ url_for('clients.manage_clients') }}">Manage Clients</a>
     </div>
     </div>
-<div class="container">
+<div class="client_container">
     <div>
     <table>
         <caption>Client Roster</caption>
@@ -41,8 +41,8 @@
     </table>
     </div>
     <div>
-    <button class="toggle_clients" id="loadMoreClients" onclick="loadMore()" title="load more clients"> +rows </button>
-    <button class="hidden" id="showLessClients" onclick="showLess();" title="show fewer clients"> -rows </button>
+    <button class="togge_button" id="loadMoreClients" onclick="loadMore()" title="load more clients"> + rows </button>
+    <button class="hidden" id="showLessClients" onclick="showLess();" title="show fewer clients"> - rows </button>
     </div>
 </div>
 <script>
