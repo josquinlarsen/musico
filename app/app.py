@@ -11,8 +11,7 @@ from flask import (
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from models import db
-import requests
-
+import datetime 
 import clients, event_calendar, index, library, users, weather
 
 
@@ -21,6 +20,14 @@ app.secret_key = "your_secret_key"
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///users.db"
 
 db.init_app(app)
+
+@app.template_filter("format_date")
+def format_date(date_value):
+    """
+    Convert Date to more USA freindly format
+    """
+    formatted = date_value.strftime("%d %b %Y")
+    return formatted
 
 # register Blueprints
 app.register_blueprint(index.bp)

@@ -125,6 +125,7 @@ def update_client(client_id):
             flash("Failed to update client.")
 
     client = get_client(client_id)
+    print(client)
     return render_template("clients/update_clients.html", client=client)
 
 
@@ -136,16 +137,17 @@ def delete_client(client_id):
     if "user_id" not in session:
         return redirect(url_for("index.login"))
     # pop-up for IH2, IH7
-    if request.form.get("confirm") == "yes":
-        response = requests.delete(f"http://127.0.0.1:8000/client/{client_id}")
-        if response.status_code == 200:
-            flash("Client deleted successfully.")
-        else:
-            flash("Error: Failed to delete client.")
+    
+    response = requests.delete(f"http://127.0.0.1:8000/client/{client_id}")
+    if response.status_code == 200:
+        flash("Client deleted successfully.")
         return redirect(url_for("clients.manage_clients"))
     else:
-        flash("Delete operation cancelled.")
-    return redirect(url_for("clients.manage_clients"))
+        flash("Error: Failed to delete client.")
+    
+    # else:
+    #     flash("Delete operation cancelled.")
+    # return redirect(url_for("clients.manage_clients"))
 
 # ----------------------------------------------------------------------------------
 #   Utilities
@@ -180,7 +182,7 @@ def sort_by_date(direction):
     sort clients by event date by given direction (asc, desc)
     """
     try:
-        response = requests.get(f"http://127.0.0.1:8000/client/{direction}")
+        response = requests.get(f"http://127.0.0.1:8000/client/sort/{direction}")
         response.raise_for_status()
         return response.json()
     except requests.RequestException:

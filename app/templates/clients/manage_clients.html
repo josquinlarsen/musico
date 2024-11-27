@@ -27,9 +27,11 @@
                     <th>Event City</th>
                     <th>Event State</th>
                     <th>
-                        <a href="{{ url_for('clients.sort_dates', direction='asc') }}" method="GET">^</a>
+                        <a href="{{ url_for('clients.sort_dates', direction='asc') }}" method="GET" title="sort date ascending"><span 
+                            class="material-symbols-outlined">arrow_upward</span></a>
                         Event Date
-                        <a href="{{ url_for('clients.sort_dates', direction='desc') }}" method="GET">⌄</a>
+                        <a href="{{ url_for('clients.sort_dates', direction='desc') }}" method="GET" title="sort date descending"><span 
+                            class="material-symbols-outlined">arrow_downward</span></a>
                     </th>
                     <th>Actions</th>
                 </tr>
@@ -45,7 +47,7 @@
                         <td>{{ client.date }}</td>
                         <td>
                             <!-- Button to edit the client -->
-                            {{ edit_button(client.name, url_for('clients.update_client', client_id=client.id)) }}
+                            {{ edit_button(client.id, url_for('clients.update_client', client_id=client.id)) }}
                             <!-- Button to delete the client -->
                             {{ delete_button(client.name, url_for('clients.delete_client', client_id=client.id)) }}
                         </td>

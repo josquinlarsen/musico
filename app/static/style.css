@@ -23,14 +23,10 @@
   }
 
   main { 
-    /* display: inline-block; */
     min-height: 80vh;
     margin:1%; 
   }
-  /* div {
-    display:inline-block;
-    padding: 0.5%;
-  } */
+
   .homediv { max-width: 50%;}
 
   header {
@@ -48,7 +44,6 @@
   }
 
   .client_container {
-    /* margin-left:5%; */
     margin-right: 15%;
     display: flex;
     flex-direction: column;
@@ -56,16 +51,17 @@
     justify-content: center;
   }
 
-  .toggle_button button{
-    color:var(--chili);
+  .client_container button {
+    color:var(--red);
     background-color: var(--salt);
     text-decoration:none;
     margin:none;
     padding: 1% 10px;
-    border: 3px solid var(--chili);
+    border: 3px solid var(--blue);
     border-radius: 25px;
     font-weight: 700;
     font-size: 1.1rem;
+    cursor: pointer;
   }
 
   button.client_container {
@@ -258,7 +254,7 @@
   color:var(--yellow);
   }
 
-  button {
+  form button {
   font-family:"Nunito Sans", sans-serif;
   background-color: var(--red);
   border: 3px solid var(--chili);
@@ -267,7 +263,7 @@
   font-weight: 700;
   font-size:1.2rem;
   margin:3% 1%;
-  padding: 1% 15px;
+  padding: 1px 15px;
   cursor: pointer;
   }
 
@@ -287,19 +283,6 @@
   font-size: 110%;
   width:450px;
   }
-  /* input[type="button"], button[type="button"], input[type="submit"] {
-  border-radius:5px;
-  background-color:var(--black);
-  color:var(--salt);
-  font-size: 1rem;
-  font-weight:bold;
-  border:1px solid var(--salt);
-  padding:3%;
-  }
-  input[type="button"]:hover, button[type="button"]:hover, input[type="submit"]:hover {
-  background-color:var(--salt);
-  color:var(--black);
-  } */
 
   /* Table */
 
@@ -325,6 +308,9 @@
     tr td{
       text-align: center;
       padding:1%;
+    }
+    tr td :last-of-type {
+      width: 4rem;
     }
 
     tr th{
@@ -358,4 +344,9 @@
       font-weight: 600;
       border: 1px solid var(--slate);
       margin:20px 2%;
+    }
+
+    /* google icons */
+    .material-symbols-outlined {
+      color: var(--slate);
     }
