@@ -19,6 +19,16 @@
         <label for="email">Email</label>
         <input type="email" name="email" value="{{ client.email }}" required>
 
+        <label for="event_type">Event Type</label>
+        <select name="event_type">
+            
+            <option value=""></option>
+            <option value="Ceremony">Ceremony</option>
+            <option value="Event">Event</option>
+            <option value="Other">Other</option>
+        
+        </select>
+
         <label for="address">Event Address</label>
         <input type="text" name="address" value="{{ client.address }}">
     

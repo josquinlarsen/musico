@@ -22,6 +22,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>Event Type</th>
                     <th>Event Address</th>
                     <th>Event City</th>
                     <th>Event State</th>
@@ -40,11 +41,16 @@
                     <tr>
                         <td>{{ client.name }}</td>
                         <td>{{ client.email }}</td>
+                        <td>{{ client.event_type }}</td>
                         <td>{{ client.address | default('---', true) }}</td>
                         <td>{{ client.city | default('---', true) }}</td>
                         <td>{{ client.state }}</td>
                         <td>{{ client.date | format_date }}</td>
                         <td><div class="action_btns">
+                            <a href="{{ url_for('clients.add_to_calendar', client_id=client['id']) }}" method="POST" title="add event to calendar">
+                            <span class="material-symbols-outlined">
+                                calendar_add_on
+                                </span></a>
                             {{ edit_button(client.id, url_for('clients.update_client', client_id=client.id)) }}
                             {{ delete_button(client.name, url_for('clients.delete_client', client_id=client.id)) }}
                         </div>

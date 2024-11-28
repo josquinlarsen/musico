@@ -19,6 +19,7 @@
             <tr>
                 <th>Name</th>
                 <th>Email</th>
+                <th>Event Type</th>
                 <th>Event Address</th>
                 <th>Event City</th>
                 <th>Event State</th>
@@ -30,6 +31,7 @@
                 <tr class="{{ 'hidden' if loop.index > 3 else ''}}">
                     <td>{{ client.name }}</td>
                     <td>{{ client.email }}</td>
+                    <td>{{ client.event_type }}</td>
                     <td>{{ client.address | default('---', true) }}</td>
                     <td>{{ client.city | default('---', true) }}</td>
                     <td>{{ client.state }}</td>

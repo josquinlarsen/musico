@@ -8,6 +8,7 @@ from flask import (
     Blueprint,
 )
 import requests
+from event_calendar import add_event
 
 bp = Blueprint("clients", __name__)
 
@@ -75,6 +76,7 @@ def create_client():
         client_data = {
             "name": request.form["name"],
             "email": request.form["email"],
+            "event_type": request.form['event_type'],
             "address": request.form["address"],
             "city": request.form["city"],
             "state": request.form["state"],
@@ -105,6 +107,7 @@ def update_client(client_id):
         client_data = {
             "name": request.form["name"],
             "email": request.form["email"],
+            "event_type": request.form['event_type'],
             "address": request.form["address"],
             "city": request.form["city"],
             "state": request.form["state"],
@@ -142,6 +145,42 @@ def delete_client(client_id):
         return redirect(url_for("clients.manage_clients"))
     else:
         flash("Error: Failed to delete client.")
+
+
+@bp.route("/add_calendar/<int:client_id>", methods=['GET', 'POST'])
+def add_to_calendar(client_id):
+    """
+    Gets a clients info and adds it to Calendar DB
+    """
+
+    if "user_id" not in session:
+        return redirect(url_for("index.login"))
+    
+    client = get_client(client_id)
+
+    # this needs TESTING!!
+    complete_location = get_address(client['address'], client['city'], client['state'])
+
+    new_event = {
+        "date": client['date'],
+        "event_type": client['event_type'],
+        "location": complete_location,
+        "duration":"",
+        "notes":"",
+    }
+
+    response = requests.post("http://127.0.0.1:8327/calendar/", json=new_event)
+
+    if response.status_code == 200:
+        flash(f"Event successfully added.")
+        return redirect(url_for("clients.manage_clients"))
+    elif response.status_code == 400:
+        flash(response.json()["detail"])
+    else:
+        flash("Failed to add event.")
+
+    clients = get_clients()
+    return render_template("clients/manage_clients.html", clients=clients)
 
 
 # ----------------------------------------------------------------------------------
@@ -183,3 +222,19 @@ def sort_by_date(direction):
         return response.json()
     except requests.RequestException:
         return None
+
+def get_address(address, city, state):
+    """
+    formats client address into one line 
+    to add to Calendar DB
+    """
+    if len(address) > 1 and len(city) > 1:
+        complete_address = f"{address} {city}, {state}"
+    elif len(address) < 1 and len(city) > 1:
+        complete_address = f"{address} {state}"
+    elif len(address) > 1 and len(city) < 1:
+        complete_address = f"{address} {state]}"
+    else:
+        return f"{state}"
+
+    return complete_address

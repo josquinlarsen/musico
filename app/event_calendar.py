@@ -82,7 +82,7 @@ def add_event():
     if request.method == "POST":
         event_data = {
             "date": request.form["date"],
-            "event_name": request.form["event_name"],
+            "event_type": request.form["event_type"],
             "location": request.form["location"],
             "duration": request.form["duration"],
             "notes": request.form["notes"],
@@ -111,7 +111,7 @@ def update_event(event_id):
     if request.method == "POST":
         event_data = {
             "date": request.form["date"],
-            "event_name": request.form["event_name"],
+            "event_type": request.form["event_type"],
             "location": request.form["location"],
             "duration": request.form["duration"],
             "notes": request.form["notes"],

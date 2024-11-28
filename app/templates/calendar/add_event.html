@@ -16,11 +16,17 @@
                 <label for="date" class="required">Date</label>
                 <input type="date" name="date" required>
 
-                <label for="event_name" class="required">Event</label>
-                <input type="text" name="event_name" required>
+                <label for="event_type" class="required">Event</label>
+                <select name="event_type" required>
+                    <option value=""></option>
+                    <option value="Concert">Concert</option>
+                    <option value="Lesson">Event</option>
+                    <option value="Rehearsal">Rehearsal</option>
+                    <option value="Other">Other</option>
+                </select>
                 
-                <label for="location" class="required">Location</label>
-                <input type="text" name="location" required>
+                <label for="location">Location</label>
+                <input type="text" name="location">
                 
                 <label for="duration">Duration</label>
                 <input type="text" name="duration">
