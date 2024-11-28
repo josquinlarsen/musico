@@ -13,10 +13,8 @@
         </div>
     </div>
     <div class="container">
-    <div class="client_container">
-        <div>
-            {{ add_button(url_for('clients.create_client'))}}
-        </div>
+    <div class="table_container">
+            {{ add_button(url_for('clients.create_client'), entity_name="client") }}
         <div>
         <table>
             <caption>Client Roster</caption>

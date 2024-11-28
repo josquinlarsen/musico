@@ -1,5 +1,4 @@
 from flask import (
-    Flask,
     render_template,
     redirect,
     url_for,
@@ -8,9 +7,6 @@ from flask import (
     flash,
     Blueprint,
 )
-from flask_sqlalchemy import SQLAlchemy
-from werkzeug.security import generate_password_hash, check_password_hash
-from models import User, db
 import requests
 
 bp = Blueprint("clients", __name__)
@@ -61,9 +57,11 @@ def view_clients():
     clients = get_clients()
     return render_template("clients/view_clients.html", clients=clients)
 
+
 # ----------------------------------------------------------------------------------
 #   Clients microservice routers
 # ----------------------------------------------------------------------------------
+
 
 @bp.route("/new", methods=["GET", "POST"])
 def create_client():
@@ -137,21 +135,19 @@ def delete_client(client_id):
     if "user_id" not in session:
         return redirect(url_for("index.login"))
     # pop-up for IH2, IH7
-    
+
     response = requests.delete(f"http://127.0.0.1:8000/client/{client_id}")
     if response.status_code == 200:
         flash("Client deleted successfully.")
         return redirect(url_for("clients.manage_clients"))
     else:
         flash("Error: Failed to delete client.")
-    
-    # else:
-    #     flash("Delete operation cancelled.")
-    # return redirect(url_for("clients.manage_clients"))
+
 
 # ----------------------------------------------------------------------------------
 #   Utilities
 # ----------------------------------------------------------------------------------
+
 
 def get_clients():
     """
@@ -187,4 +183,3 @@ def sort_by_date(direction):
         return response.json()
     except requests.RequestException:
         return None
-

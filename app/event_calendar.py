@@ -1,5 +1,4 @@
 from flask import (
-    Flask,
     render_template,
     redirect,
     url_for,
@@ -8,10 +7,7 @@ from flask import (
     flash,
     Blueprint,
 )
-from flask_sqlalchemy import SQLAlchemy
-from werkzeug.security import generate_password_hash, check_password_hash
-from models import User, db
-import requests, os, json
+import requests
 from datetime import datetime, timedelta
 
 bp = Blueprint("event_calendar", __name__)
@@ -62,13 +58,13 @@ def view_calendar(year, month):
 
 @bp.route("/change/<int:year>/<int:month>")
 def change_month(year, month):
+    """
+    returns the next or previous month to toggle calendar view
+    """
 
-    update_year, update_month = month_modulo(year, month)
-    print(update_year, update_month)
+    update_year, update_month = date_modulo(year, month)
     return view_calendar(update_year, update_month)
 
-
-@bp.route("/current/<int:year><int:month>")
 
 # ----------------------------------------------------------------------------------
 #   Calendar microservice routers
@@ -221,9 +217,9 @@ def month_to_text(month):
     return month_dico[month]
 
 
-def month_modulo(year, month):
+def date_modulo(year, month):
     """
-    returns month and accounts for wrap around
+    returns month, accounts for wrap around
     """
     if month > 12:
         return (year + 1), 1

@@ -1,5 +1,4 @@
 from flask import (
-    Flask,
     render_template,
     redirect,
     url_for,
@@ -8,10 +7,8 @@ from flask import (
     flash,
     Blueprint,
 )
-from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from models import User, db
-import requests
 
 bp = Blueprint("index", __name__)
 

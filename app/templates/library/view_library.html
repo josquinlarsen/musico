@@ -11,10 +11,8 @@
     </div>
 </div>
 <div class="container">
-<div class="client_container">
-    <div>
-        {{ add_button(url_for('library.add_piece'))}}
-    </div>
+<div class="table_container">
+        {{ add_button(url_for('library.add_piece'), entity_name='piece')}}
     <div>
         <table>
             <caption>Music Library</caption>

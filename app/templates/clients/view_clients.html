@@ -11,7 +11,7 @@
     </div>
     </div>
 <div class="container">
-<div class="client_container">
+<div class="table_container">
     <div>
     <table>
         <caption>Client Roster</caption>
@@ -40,8 +40,14 @@
     </table>
     </div>
     <div>
-        <button class="togge_button" id="loadMoreClients" onclick="loadMore()" title="load more clients"> + rows </button>
-        <button class="hidden" id="showLessClients" onclick="showLess();" title="show fewer clients"> - rows </button>
+        <button class="ignore" id="loadMoreClients" onclick="loadMore()" title="load more clients"><span 
+            class="material-symbols-outlined expand_arrow_down">
+            expand_circle_down
+            </span></button>
+        <button class="hidden" id="showLessClients" onclick="showLess();" title="show fewer clients"><span 
+            class="material-symbols-outlined expand_arrow_up">
+            expand_circle_up
+            </span></button>
     </div>
 </div>
 </div>

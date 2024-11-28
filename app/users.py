@@ -1,5 +1,4 @@
 from flask import (
-    Flask,
     render_template,
     redirect,
     url_for,
@@ -8,17 +7,16 @@ from flask import (
     flash,
     Blueprint,
 )
-from flask_sqlalchemy import SQLAlchemy
-from werkzeug.security import generate_password_hash, check_password_hash
-from models import User, db
-import requests
 
-from clients import get_clients, get_client
+from werkzeug.security import generate_password_hash
+from models import User, db
+
+from clients import get_clients
 
 bp = Blueprint("users", __name__)
 
 
-@bp.route("/home")  # update router to /home
+@bp.route("/home")
 def home():
     """
     Home Page router

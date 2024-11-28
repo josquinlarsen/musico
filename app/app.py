@@ -1,17 +1,5 @@
-from flask import (
-    Flask,
-    render_template,
-    redirect,
-    url_for,
-    request,
-    session,
-    flash,
-    Blueprint,
-)
-from flask_sqlalchemy import SQLAlchemy
-from werkzeug.security import generate_password_hash, check_password_hash
+from flask import Flask
 from models import db
-import datetime 
 import clients, event_calendar, index, library, users, weather
 
 

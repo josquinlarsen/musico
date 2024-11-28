@@ -1,7 +1,8 @@
-{% macro add_button(target_url) -%}
-<div class="add_btn_right page_buttons">
-<a href="{{ target_url }}" title="Add new entry"><span 
-    class="material-symbols-outlined">add_box</span></a>
+{% macro add_button(target_url, entity_name) -%}
+<div class="add_btn">
+<a href="{{ target_url }}" title="Add new {{ entity_name }}">
+    + new {{ entity_name }}
+</a>
 </div>
 {%- endmacro %}
 

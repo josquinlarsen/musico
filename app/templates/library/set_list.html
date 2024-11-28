@@ -13,15 +13,13 @@
     </div>
     <div class="container">
         <h3>Here are the pieces from your library:</h3>
-  
         <article>
-        {% if pieces %}
-        {% for piece in pieces %}
-        <p>{{ piece.title }} by {{ piece.composer | default("Unknown", true) }} </p>
-        {% endfor %}
-        {% endif %}
+            {% if pieces %}
+            {% for piece in pieces %}
+            <p>{{ piece.title }} by {{ piece.composer | default("Unknown", true) }} </p>
+            {% endfor %}
+            {% endif %}
         </article>
-    
     </div>
 </main>
 {% endblock %}
