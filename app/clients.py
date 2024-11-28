@@ -8,7 +8,6 @@ from flask import (
     Blueprint,
 )
 import requests
-from event_calendar import add_event
 
 bp = Blueprint("clients", __name__)
 
@@ -233,7 +232,7 @@ def get_address(address, city, state):
     elif len(address) < 1 and len(city) > 1:
         complete_address = f"{address} {state}"
     elif len(address) > 1 and len(city) < 1:
-        complete_address = f"{address} {state]}"
+        complete_address = f"{address} {state}"
     else:
         return f"{state}"
 
