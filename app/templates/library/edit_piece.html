@@ -10,25 +10,25 @@
         <a href="{{ url_for('library.index') }}">Library Home</a>
     </div>
 </div>
-    
+    <div class="container">
     <form method="POST">
         <fieldset>
-            <label for="title">Title:</label>
+            <label for="title">Title</label>
             <input type="text" name="title" value="{{ piece.title }}" required>
 
-            <label for="composer">Composer:</label>
+            <label for="composer">Composer</label>
             <input type="text" name="composer" value="{{ piece.composer }}">
             
-            <label for="instrumentation">Instrumentation:</label>
+            <label for="instrumentation">Instrumentation</label>
             <input type="text" name="instrumentation" value="{{ piece.instrumentation }}" required>
             
-            <label for="duration">Duration:</label>
+            <label for="duration">Duration</label>
             <input type="text"  name="duration" value="{{ piece.duration }}">
             
             <button type="submit">Save</button>
             
         </fieldset>
     </form>
-
+</div>
 </main>
 {% endblock %}

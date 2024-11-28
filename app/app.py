@@ -1,17 +1,5 @@
-from flask import (
-    Flask,
-    render_template,
-    redirect,
-    url_for,
-    request,
-    session,
-    flash,
-    Blueprint,
-)
-from flask_sqlalchemy import SQLAlchemy
-from werkzeug.security import generate_password_hash, check_password_hash
+from flask import Flask
 from models import db
-import datetime 
 import clients, event_calendar, index, library, users, weather
 
 
@@ -26,8 +14,24 @@ def format_date(date_value):
     """
     Convert Date to more USA freindly format
     """
-    formatted = date_value.strftime("%d %b %Y")
-    return formatted
+    month_dico = {
+        "01": "Jan",
+        "02": "Feb",
+        "03": "Mar",
+        "04": "Apr",
+        "05": "May",
+        "06": "Jun",
+        "07": "Jul",
+        "08": "Aug",
+        "09": "Sept",
+        "10": "Oct",
+        "11": "Nov",
+        "12": "Dec",
+    }
+    date_array = date_value.split('-')
+    formatted_date = f"{date_array[2]} {month_dico[date_array[1]]} {date_array[0]}"
+
+    return formatted_date
 
 # register Blueprints
 app.register_blueprint(index.bp)

@@ -9,9 +9,7 @@
 
     </div>
     <div class="container">
-        <div class="add_btn_right page_buttons">
-            <a href="{{ url_for('event_calendar.add_event') }}">+ add event</a>
-        </div>
+        {{ add_button(url_for('event_calendar.add_event'), entity_name='event')}}
         <div>
             <table class="calendar">
                 <caption>
@@ -56,7 +54,7 @@
                         {% if date == event['date'] %}
                         <div>
                         <a class="event_detail" 
-                        href="{{ url_for('event_calendar.event_detail', event_id=event['id'])}}"> {{ event['event_name'] | default("Event", true) }}</a>
+                        href="{{ url_for('event_calendar.event_detail', event_id=event['id'])}}"> {{ event['event_type'] | default("Event", true) }}</a>
                         </div>
                         {% endif %}
                         {% endfor %}

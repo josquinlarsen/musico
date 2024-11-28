@@ -12,10 +12,9 @@
             </span>
         </div>
     </div>
-    <div class="client_container">
-        <div>
-            {{ add_button(url_for('clients.create_client'))}}
-        </div>
+    <div class="container">
+    <div class="table_container">
+            {{ add_button(url_for('clients.create_client'), entity_name="client") }}
         <div>
         <table>
             <caption>Client Roster</caption>
@@ -23,15 +22,16 @@
                 <tr>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>Event Type</th>
                     <th>Event Address</th>
                     <th>Event City</th>
                     <th>Event State</th>
                     <th>
-                        <a href="{{ url_for('clients.sort_dates', direction='asc') }}" method="GET" title="sort date ascending"><span 
-                            class="material-symbols-outlined">arrow_upward</span></a>
+                        <div class="ignore"></div>
+                        {{ sort_dates(url_for('clients.sort_dates', direction='asc'), direction='asc') }}
                         Event Date
-                        <a href="{{ url_for('clients.sort_dates', direction='desc') }}" method="GET" title="sort date descending"><span 
-                            class="material-symbols-outlined">arrow_downward</span></a>
+                        {{ sort_dates(url_for('clients.sort_dates', direction='desc'), direction='desc') }}
+                        </div>
                     </th>
                     <th>Actions</th>
                 </tr>
@@ -41,15 +41,19 @@
                     <tr>
                         <td>{{ client.name }}</td>
                         <td>{{ client.email }}</td>
+                        <td>{{ client.event_type }}</td>
                         <td>{{ client.address | default('---', true) }}</td>
                         <td>{{ client.city | default('---', true) }}</td>
                         <td>{{ client.state }}</td>
-                        <td>{{ client.date }}</td>
-                        <td>
-                            <!-- Button to edit the client -->
+                        <td>{{ client.date | format_date }}</td>
+                        <td><div class="action_btns">
+                            <a href="{{ url_for('clients.add_to_calendar', client_id=client['id']) }}" method="POST" title="add event to calendar">
+                            <span class="material-symbols-outlined">
+                                calendar_add_on
+                                </span></a>
                             {{ edit_button(client.id, url_for('clients.update_client', client_id=client.id)) }}
-                            <!-- Button to delete the client -->
                             {{ delete_button(client.name, url_for('clients.delete_client', client_id=client.id)) }}
+                        </div>
                         </td>
                     </tr>
                 {% endfor %}
@@ -57,5 +61,6 @@
         </table>
     </div>
     </div>
+</div>
 </main>
 {% endblock %}

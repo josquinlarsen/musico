@@ -13,19 +13,26 @@
     <div class="container">
         <form method="POST">
             <fieldset>
-                <label for="date">Date:</label>
-                <input type="date" name="date" value="{{ event.date }}" required>
+                <label for="date">Date</label>
+                <input type="date" name="date" value="{{ event.date | format_date}}" required>
 
-                <label for="event_name">Event:</label>
-                <input type="text" name="event_name" value="{{ event.event_name }}" required>
+                <label for="event_type">Event</label>
+                <select name="event_type">
+                    <option value=""></option>
+                    <option value="Concert">Concert</option>
+                    <option value="Lesson">Event</option>
+                    <option value="Rehearsal">Rehearsal</option>
+                    <option value="Other">Other</option>
+                </select>
                 
-                <label for="location">Location:</label>
-                <input type="text" name="location" value="{{ event.location }}" required>
                 
-                <label for="duration">Duration:</label>
+                <label for="location">Location</label>
+                <input type="text" name="location" value="{{ event.location }}">
+                
+                <label for="duration">Duration</label>
                 <input type="text" name="duration" value="{{ event.duration }}">
 
-                <label for="notes">Notes:</label>
+                <label for="notes">Notes</label>
                 <input type="text" name="notes" value="{{ event.notes }}">
                 
                 <button type="submit">Add</button>

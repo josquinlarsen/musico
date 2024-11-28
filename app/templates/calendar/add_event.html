@@ -13,19 +13,25 @@
     <div class="container">
         <form method="POST">
             <fieldset>
-                <label for="date">Date:</label>
+                <label for="date" class="required">Date</label>
                 <input type="date" name="date" required>
 
-                <label for="event_name">Event:</label>
-                <input type="text" name="event_name" required>
+                <label for="event_type" class="required">Event</label>
+                <select name="event_type" required>
+                    <option value=""></option>
+                    <option value="Concert">Concert</option>
+                    <option value="Lesson">Event</option>
+                    <option value="Rehearsal">Rehearsal</option>
+                    <option value="Other">Other</option>
+                </select>
                 
-                <label for="location">Location:</label>
-                <input type="text" name="location" required>
+                <label for="location">Location</label>
+                <input type="text" name="location">
                 
-                <label for="duration">Duration:</label>
+                <label for="duration">Duration</label>
                 <input type="text" name="duration">
 
-                <label for="notes">Notes:</label>
+                <label for="notes">Notes</label>
                 <input type="text" name="notes">
                 
                 <button type="submit">Add</button>

@@ -1,6 +1,9 @@
-{% macro add_button(target_url) -%}
-<a href="{{ target_url }}" title="Add new entry"><span 
-    class="material-symbols-outlined">add_box</span></a>
+{% macro add_button(target_url, entity_name) -%}
+<div class="add_btn">
+<a href="{{ target_url }}" title="Add new {{ entity_name }}">
+    + new {{ entity_name }}
+</a>
+</div>
 {%- endmacro %}
 
 
@@ -15,4 +18,16 @@
     <button class="ignore" type="submit" title="Delete entity"><span 
         class="material-symbols-outlined">delete</span></button>
 </form>
+{%- endmacro %}
+
+{% macro sort_dates(target_url, direction) -%}
+<a class="ignore" href="{{ target_url }}" method="GET">
+    {% if direction == 'asc'%}
+    <span title="sort date ascending"
+    class="material-symbols-outlined">arrow_upward</span>
+    {% else %}
+    <span title="sort date descending"
+    class="material-symbols-outlined">arrow_downward</span>
+    {% endif %}
+</a>
 {%- endmacro %}

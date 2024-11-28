@@ -1,5 +1,4 @@
 from flask import (
-    Flask,
     render_template,
     redirect,
     url_for,
@@ -8,10 +7,7 @@ from flask import (
     flash,
     Blueprint,
 )
-from flask_sqlalchemy import SQLAlchemy
-from werkzeug.security import generate_password_hash, check_password_hash
-from models import User
-import requests, json
+import requests
 
 bp = Blueprint("weather", __name__)
 
@@ -32,7 +28,9 @@ def index():
         weather_data = format_json(response.json())
 
         if response.status_code == 200:
-            return render_template("weather/display_weather.html", zipcode=zipcode, weather=weather_data)
+            return render_template(
+                "weather/display_weather.html", zipcode=zipcode, weather=weather_data
+            )
         elif response.status_code == 400:
             flash(response.json()["detail"])
         else:

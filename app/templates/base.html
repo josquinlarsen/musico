@@ -1,4 +1,4 @@
-{% from 'macros/buttons.html' import add_button, edit_button, delete_button %}
+{% from 'macros/buttons.html' import add_button, edit_button, delete_button, sort_dates %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,9 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}musico{% endblock %}</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" 
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=add_box,arrow_downward,arrow_upward,chevron_left,chevron_right,delete,edit,edit_calendar,today" />
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=add_box,arrow_downward,arrow_drop_down,arrow_drop_up,arrow_upward,calendar_add_on,chevron_left,chevron_right,delete,edit,edit_calendar,expand_circle_down,expand_circle_up,help,today" />
     <script src="{{ url_for('static', filename='main.js') }}"></script>
 </head>
 <body>
