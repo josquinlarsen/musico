@@ -14,7 +14,7 @@
         <form method="POST">
             <fieldset>
                 <label for="date">Date:</label>
-                <input type="date" name="date" value="{{ event.date }}" required>
+                <input type="date" name="date" value="{{ event.date | format_date}}" required>
 
                 <label for="event_name">Event:</label>
                 <input type="text" name="event_name" value="{{ event.event_name }}" required>

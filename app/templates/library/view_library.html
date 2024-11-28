@@ -11,12 +11,15 @@
     </div>
 </div>
 <div class="container">
+<div class="client_container">
+    <div>
+        {{ add_button(url_for('library.add_piece'))}}
+    </div>
     <div>
         <table>
             <caption>Music Library</caption>
             <thead>
                 <tr>
-                    <th>{{ add_button(url_for('library.add_piece'))}}</th>
                     <th>Title</th>
                     <th>Composer</th>
                     <th>Instrumentation</th>
@@ -27,20 +30,21 @@
             <tbody>
                 {% for piece in pieces %}
                     <tr>
-                        <td></td>
                         <td>{{ piece.title }}</td>
                         <td>{{ piece.composer | default('---', true) }}</td>
                         <td>{{ piece.instrumentation }}</td>
                         <td>{{ piece.duration| default('---', true) }}</td>
-                        <td>
+                        <td><div class="action_btns">
                              {{ edit_button(piece.title, url_for('library.update_piece', piece_id=piece.id)) }}
                              {{ delete_button(piece.title, url_for('library.delete_piece', piece_id=piece.id)) }}
+                            </div>
                         </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
+</div>
         </main>
 {% endblock %}
  

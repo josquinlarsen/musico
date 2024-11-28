@@ -12,6 +12,7 @@
             </span>
         </div>
     </div>
+    <div class="container">
     <div class="client_container">
         <div>
             {{ add_button(url_for('clients.create_client'))}}
@@ -27,11 +28,11 @@
                     <th>Event City</th>
                     <th>Event State</th>
                     <th>
-                        <a href="{{ url_for('clients.sort_dates', direction='asc') }}" method="GET" title="sort date ascending"><span 
-                            class="material-symbols-outlined">arrow_upward</span></a>
+                        <div class="ignore"></div>
+                        {{ sort_dates(url_for('clients.sort_dates', direction='asc'), direction='asc') }}
                         Event Date
-                        <a href="{{ url_for('clients.sort_dates', direction='desc') }}" method="GET" title="sort date descending"><span 
-                            class="material-symbols-outlined">arrow_downward</span></a>
+                        {{ sort_dates(url_for('clients.sort_dates', direction='desc'), direction='desc') }}
+                        </div>
                     </th>
                     <th>Actions</th>
                 </tr>
@@ -44,12 +45,11 @@
                         <td>{{ client.address | default('---', true) }}</td>
                         <td>{{ client.city | default('---', true) }}</td>
                         <td>{{ client.state }}</td>
-                        <td>{{ client.date }}</td>
-                        <td>
-                            <!-- Button to edit the client -->
+                        <td>{{ client.date | format_date }}</td>
+                        <td><div class="action_btns">
                             {{ edit_button(client.id, url_for('clients.update_client', client_id=client.id)) }}
-                            <!-- Button to delete the client -->
                             {{ delete_button(client.name, url_for('clients.delete_client', client_id=client.id)) }}
+                        </div>
                         </td>
                     </tr>
                 {% endfor %}
@@ -57,5 +57,6 @@
         </table>
     </div>
     </div>
+</div>
 </main>
 {% endblock %}

@@ -10,20 +10,19 @@
         <a href="{{ url_for('clients.manage_clients') }}">Manage Clients</a>
     </div>
     </div>
+<div class="container">
 <div class="client_container">
     <div>
     <table>
         <caption>Client Roster</caption>
         <thead>
             <tr>
-        
                 <th>Name</th>
                 <th>Email</th>
                 <th>Event Address</th>
                 <th>Event City</th>
                 <th>Event State</th>
                 <th>Event Date</th>
-                
             </tr>
         </thead>
         <tbody>
@@ -34,34 +33,17 @@
                     <td>{{ client.address | default('---', true) }}</td>
                     <td>{{ client.city | default('---', true) }}</td>
                     <td>{{ client.state }}</td>
-                    <td>{{ client.date }}</td>
+                    <td>{{ client.date | format_date }}</td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
     </div>
     <div>
-    <button class="togge_button" id="loadMoreClients" onclick="loadMore()" title="load more clients"> + rows </button>
-    <button class="hidden" id="showLessClients" onclick="showLess();" title="show fewer clients"> - rows </button>
+        <button class="togge_button" id="loadMoreClients" onclick="loadMore()" title="load more clients"> + rows </button>
+        <button class="hidden" id="showLessClients" onclick="showLess();" title="show fewer clients"> - rows </button>
     </div>
 </div>
-<script>
-    function loadMore() {
-        document.querySelectorAll('.hidden').forEach(row => row.classList.remove('hidden'));
-        document.getElementById('loadMoreClients').style.display = 'none';
-        document.getElementById('showLessClients').style.display = 'inline';
-    }
-
-    function showLess() {
-        document.querySelectorAll('tr').forEach((row, index) => {
-            if (index > 3) {
-                row.classList.add('hidden');
-            }
-        });
-        document.getElementById('loadMoreClients').style.display = 'inline';
-        document.getElementById('showLessClients').style.display = 'none';
-        
-    }
-</script>
+</div>
 </main>
 {% endblock %}

@@ -18,16 +18,14 @@
             <th>Actions:</th>
             <td>
                 <div class="action_btns">
-                <!-- Button to edit the event -->
                 {{ edit_button(event.event_name, url_for('event_calendar.update_event', event_id=event.id)) }}
-                <!-- Button to delete the event -->
                 {{ delete_button(event.event_name, url_for('event_calendar.delete_event', event_id=event.id)) }}
                 </div>
             </td>
         </tr>
         <tr>
             <th>Date: </th>
-            <td>{{event.date}}</td>
+            <td>{{event.date | format_date }}</td>
         <tr>
             <th>Event: </th>
             <td>{{ event.event_name }}</td>

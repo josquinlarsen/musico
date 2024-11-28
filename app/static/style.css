@@ -296,6 +296,7 @@
       margin:1% 2%;
       padding:1%;
     }
+
     caption {
       border-bottom:1.5px solid var(--blue); 
       color:var(--chili); 
@@ -310,14 +311,17 @@
     
     tr td{
       text-align: center;
+      width:auto;
       padding:1%;
     }
-    tr td :last-of-type {
-      width: 4rem;
-    }
-
+    
     tr th{
       padding:0.5%;
+      
+    }
+    .action_btns { 
+      display: flex;
+      justify-content: center;
     }
 
     /* Calendar */
@@ -329,7 +333,6 @@
       text-align: center;
       font-weight: 600;
     }
-
 
     table.calendar {
       padding:1%;
