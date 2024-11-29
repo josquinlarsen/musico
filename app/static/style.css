@@ -6,6 +6,7 @@
   --lavender:   rgba(191,148,228);
   --purple:     rgba(48, 25, 129);
   --lightblue:  rgba(206,215,242);
+  --brightblue: rgba(0, 150, 255);
   --blue:       rgba(83,104,166);
   --red:        rgba(223,79,55);
   --chili:      rgba(202,60,37);
@@ -30,9 +31,18 @@
   .homediv { max-width: 50%;}
 
   header {
+    background-color: var(--salt);
     color:var(--salt);
     padding:2%;
   }
+
+  /* sticky header - maybe implement? */
+  /* body header { 
+    background-color: var(--salt);
+    position:sticky; 
+    top: 0;
+    z-index: 1;
+  } */
 
   h1 {font-size:225%;}
 
@@ -109,8 +119,11 @@
 
   .page_buttons { margin:2%; }
 
-  .add_btn { margin:2% }
-
+  .add_btn { 
+    position:relative;
+    margin:2% 
+  }
+  
   .add_btn a{
     color:var(--purple);
     background-color: var(--salt);
@@ -205,7 +218,7 @@
     font-size:calc(1.1rem);
   }
 
-  article{
+  article {
     font-family: 'Trebuchet MS', sans-serif;
     color:var(--black);
     background-color: var(--lightblue);
@@ -213,12 +226,12 @@
     border-radius: 5px;
     padding:5px 25px;
     margin-left: 20%;
-    }
+  }
 
   a.event_detail {
     text-decoration: none;
-    color: var(--blue);
-    border: 2px solid var(--blue);
+    color: var(--brightblue);
+    border: 2px solid var(--brightblue);
     border-radius: 25px;
     padding: 2px 10px;
     font-weight: 600;
@@ -226,8 +239,8 @@
 
   a:hover.event_detail {
     color:var(--salt);
-    background-color: var(--blue);
-    border-color: var(--lavender);
+    background-color: var(--brightblue);
+    border-color: var(--brightblue);
   }
   
   footer {
@@ -247,6 +260,7 @@
     justify-content: right;
     font-family:"Nunito Sans", sans-serif;
     font-size:95%;
+    font-weight: 700;
   }
 
   fieldset { border:none; }
@@ -284,6 +298,13 @@
     width:450px;
     font-size:110%;
   }
+  select {
+    border: 1.5px solid var(--black);
+    border-radius: 5px;
+    padding:0.5%;
+    font-size: 110%;
+    width:450px;
+  }
 
   input {
     border: 1.5px solid var(--black);
@@ -298,7 +319,7 @@
   .hidden {display:none;}
 
   table {
-    width:900px;
+    min-width: auto;
     padding:1%;
   }
 
@@ -317,10 +338,11 @@
   
   tr td{
     text-align: center;
-    width:auto;
     padding:1%;
   }
-    
+  
+  .event_date { min-width:150px; }
+
   tr th{ padding:0.5%; }
 
   .action_btns { 
