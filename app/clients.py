@@ -75,7 +75,7 @@ def create_client():
         client_data = {
             "name": request.form["name"],
             "email": request.form["email"],
-            "event_type": request.form['event_type'],
+            "event_type": request.form["event_type"],
             "address": request.form["address"],
             "city": request.form["city"],
             "state": request.form["state"],
@@ -106,7 +106,7 @@ def update_client(client_id):
         client_data = {
             "name": request.form["name"],
             "email": request.form["email"],
-            "event_type": request.form['event_type'],
+            "event_type": request.form["event_type"],
             "address": request.form["address"],
             "city": request.form["city"],
             "state": request.form["state"],
@@ -125,7 +125,6 @@ def update_client(client_id):
             flash("Failed to update client.")
 
     client = get_client(client_id)
-    print(client)
     return render_template("clients/update_clients.html", client=client)
 
 
@@ -136,7 +135,6 @@ def delete_client(client_id):
     """
     if "user_id" not in session:
         return redirect(url_for("index.login"))
-    # pop-up for IH2, IH7
 
     response = requests.delete(f"http://127.0.0.1:8000/client/{client_id}")
     if response.status_code == 200:
@@ -146,7 +144,7 @@ def delete_client(client_id):
         flash("Error: Failed to delete client.")
 
 
-@bp.route("/add_calendar/<int:client_id>", methods=['GET', 'POST'])
+@bp.route("/add_calendar/<int:client_id>", methods=["GET", "POST"])
 def add_to_calendar(client_id):
     """
     Gets a clients info and adds it to Calendar DB
@@ -154,18 +152,17 @@ def add_to_calendar(client_id):
 
     if "user_id" not in session:
         return redirect(url_for("index.login"))
-    
+
     client = get_client(client_id)
 
-    # this needs TESTING!!
-    complete_location = get_address(client['address'], client['city'], client['state'])
+    complete_location = get_address(client["address"], client["city"], client["state"])
 
     new_event = {
-        "date": client['date'],
-        "event_type": client['event_type'],
+        "date": client["date"],
+        "event_type": client["event_type"],
         "location": complete_location,
-        "duration":"",
-        "notes":"",
+        "duration": "",
+        "notes": "",
     }
 
     response = requests.post("http://127.0.0.1:8327/calendar/", json=new_event)
@@ -222,9 +219,10 @@ def sort_by_date(direction):
     except requests.RequestException:
         return None
 
+
 def get_address(address, city, state):
     """
-    formats client address into one line 
+    formats client address into one line
     to add to Calendar DB
     """
     if len(address) > 1 and len(city) > 1:
