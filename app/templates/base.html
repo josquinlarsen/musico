@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" 
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=add_box,arrow_downward,arrow_drop_down,arrow_drop_up,arrow_upward,calendar_add_on,chevron_left,chevron_right,delete,edit,edit_calendar,expand_circle_down,expand_circle_up,help,today" />
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=add_box,arrow_downward,arrow_drop_down,arrow_drop_up,arrow_upward,calendar_add_on,check_circle,chevron_left,chevron_right,delete,edit,edit_calendar,error,expand_circle_down,expand_circle_up,help,today,warning" />
     <script src="{{ url_for('static', filename='main.js') }}"></script>
 </head>
 <body>
@@ -33,13 +33,26 @@
     </div>
 </header>    
     <div>
-        {% with messages = get_flashed_messages() %}
+        {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
-                <ul>
-                    {% for message in messages %}
-                        <li>{{ message }}</li>
-                    {% endfor %}
-                </ul>
+                {% for category, message in messages %}
+                    {% if category == 'success' %}
+                    <div class="flash {{category}}"><span class="material-symbols-outlined check_circle">
+                        check_circle
+                        </span>{{ message }}
+                    </div>
+                    {% else if category == 'error' %}
+                    <div class="flash {{category}}"><span class="material-symbols-outlined error">
+                        error
+                        </span>{{ message }}
+                    </div>
+                    {% else %}
+                    <div class="flash {{ category }}">
+                    <span class="material-symbols-outlined warning">
+                        warning
+                        </span>
+                    {% endif %}
+                {% endfor %}
             {% endif %}
         {% endwith %}
     </div>

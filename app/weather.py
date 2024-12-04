@@ -32,9 +32,9 @@ def index():
                 "weather/display_weather.html", zipcode=zipcode, weather=weather_data
             )
         elif response.status_code == 400:
-            flash(response.json()["detail"])
+            flash(response.json()["detail"], "error")
         else:
-            flash("Failed to get weather.")
+            flash("Failed to get weather.", "error")
 
     return render_template("weather/get_weather.html")
 

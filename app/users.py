@@ -60,7 +60,7 @@ def update():
         if request.form["password"]:
             user.password = generate_password_hash(request.form["password"])
         db.session.commit()
-        flash("User details updated successfully.")
+        flash("User details updated successfully.", "success")
         return redirect(url_for("users.home"))
 
     return render_template("users/update.html", user=user)
