@@ -58,12 +58,12 @@ def add_piece():
 
         response = requests.post("http://127.0.0.1:8127/library/", json=piece_data)
         if response.status_code == 200:
-            flash(f"{request.form['title']} successfully added.")
+            flash(f"{request.form['title']} successfully added.", "success")
             return redirect(url_for("library.view_library"))
         elif response.status_code == 400:
-            flash(response.json()["detail"])
+            flash(response.json()["detail"], "error")
         else:
-            flash("Failed to add piece.")
+            flash("Failed to add piece.", "error")
 
     return render_template("library/add_piece.html")
 
@@ -88,13 +88,13 @@ def update_piece(piece_id):
             f"http://127.0.0.1:8127/library/{piece_id}", json=piece_data
         )
         if response.status_code == 200:
-            flash("Piece updated successfully.")
+            flash("Piece updated successfully.", "success")
             return redirect(url_for("library.view_library"))
 
         elif response.status_code == 400:
-            flash(response.json()["detail"])
+            flash(response.json()["detail"], "error")
         else:
-            flash("Failed to update piece.")
+            flash("Failed to update piece.", "error")
 
     piece = get_piece_id(piece_id)
 
@@ -112,12 +112,12 @@ def delete_piece(piece_id):
     if request.method == "POST":
         response = requests.delete(f"http://127.0.0.1:8127/library/{piece_id}")
         if response.status_code == 200:
-            flash("Piece deleted successfully.")
+            flash("Piece deleted successfully.", "success")
         else:
-            flash("Error: Failed to delete piece.")
+            flash("Error: Failed to delete piece.", "error")
         return redirect(url_for("library.view_library"))
     else:
-        flash("Delete operation cancelled.")
+        flash("Delete operation cancelled.", "warning")
     return redirect(url_for("library.view_library"))
 
 

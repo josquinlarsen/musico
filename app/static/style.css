@@ -10,8 +10,11 @@
   --blue:       rgba(83,104,166);
   --red:        rgba(223,79,55);
   --chili:      rgba(202,60,37);
+  --lightred:   rgba(255,87,51,0.5);
+  --lightgreen: rgba(144,238,144,0.5);
   --green:      rgba(3,96,22);
   --mint:       rgba(143,247,167);
+  --darkyellow: rgb(246, 186, 9);
   --yellow:     rgba(247, 225, 160);
   --yellowT:    rgba(247, 225, 160, 0.5);
   --salt:       rgba(247, 247, 247);
@@ -49,6 +52,34 @@
   h2 {color:var(--blue);}
 
   h3 {color:var(--purple)}
+
+  .flash {
+    display:flex;
+    align-items: end;
+    padding: 1% 2%;
+    font-weight:700;
+    color:var(--black);
+    width:fit-content;
+    margin-left: 10%;
+  }
+
+  .success {
+    border: 2px solid var(--green);
+    border-radius: 5px;
+    background-color: var(--lightgreen);
+  }
+
+  .error {
+    border: 2px solid var(--chili);
+    border-radius: 5px;
+    background-color: var(--lightred);
+  }
+
+  .warning {
+    border: 2px solid var(--darkyellow);
+    border-radius: 5px;
+    background-color: var(--yellowT);
+  }
 
   .container {
     margin-left:5%;
@@ -425,4 +456,16 @@
     color: var(--red);
     font-size: 2rem;
     cursor: pointer;
+  }
+
+  .material-symbols-outlined.check_circle {
+    color: var(--green)
+  }
+
+  .material-symbols-outlined.error {
+    color: var(--chili)
+  }
+
+  .material-symbols-outlined.warning {
+    color:var(--darkyellow);
   }

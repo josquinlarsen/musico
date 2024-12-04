@@ -36,7 +36,7 @@ def login():
             session["username"] = user.username
             return redirect(url_for("users.home"))
         else:
-            flash("Invalid credentials. Please try again.")
+            flash("Invalid credentials. Please try again.", "warning")
     return render_template("users/login.html")
 
 
@@ -62,6 +62,6 @@ def register():
 
         db.session.add(new_user)
         db.session.commit()
-        flash("Registration successful! Please log in.")
+        flash("Registration successful! Please log in.", "success")
         return redirect(url_for("index.login"))
     return render_template("users/register.html")

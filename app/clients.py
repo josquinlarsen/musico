@@ -84,12 +84,12 @@ def create_client():
 
         response = requests.post("http://127.0.0.1:8000/client/", json=client_data)
         if response.status_code == 200:
-            flash("Client created successfully.")
+            flash(f"Client {request.form['name']} created successfully.", "success")
             return redirect(url_for("clients.manage_clients"))
         elif response.status_code == 400:
-            flash(response.json()["detail"])
+            flash(response.json()["detail"], "error")
         else:
-            flash("Failed to create client.")
+            flash("Failed to create client.", "error")
 
     return render_template("clients/create_clients.html")
 
@@ -116,13 +116,13 @@ def update_client(client_id):
             f"http://127.0.0.1:8000/client/{client_id}", json=client_data
         )
         if response.status_code == 200:
-            flash("Client updated successfully.")
+            flash(f"Client {request.form['name']} updated successfully.", "success")
             return redirect(url_for("clients.manage_clients"))
 
         elif response.status_code == 400:
-            flash(response.json()["detail"])
+            flash(response.json()["detail"], "error")
         else:
-            flash("Failed to update client.")
+            flash("Failed to update client.", "error")
 
     client = get_client(client_id)
     return render_template("clients/update_clients.html", client=client)
@@ -138,10 +138,10 @@ def delete_client(client_id):
 
     response = requests.delete(f"http://127.0.0.1:8000/client/{client_id}")
     if response.status_code == 200:
-        flash("Client deleted successfully.")
+        flash("Client deleted successfully.", "success")
         return redirect(url_for("clients.manage_clients"))
     else:
-        flash("Error: Failed to delete client.")
+        flash("Error: Failed to delete client.", "error")
 
 
 @bp.route("/add_calendar/<int:client_id>", methods=["GET", "POST"])
@@ -168,12 +168,12 @@ def add_to_calendar(client_id):
     response = requests.post("http://127.0.0.1:8327/calendar/", json=new_event)
 
     if response.status_code == 200:
-        flash(f"Event successfully added.")
+        flash(f"Event successfully added.", "success")
         return redirect(url_for("clients.manage_clients"))
     elif response.status_code == 400:
-        flash(response.json()["detail"])
+        flash(response.json()["detail"], "error")
     else:
-        flash("Failed to add event.")
+        flash("Failed to add event.", "error")
 
     clients = get_clients()
     return render_template("clients/manage_clients.html", clients=clients)

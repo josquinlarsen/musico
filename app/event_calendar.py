@@ -90,12 +90,12 @@ def add_event():
 
         response = requests.post("http://127.0.0.1:8327/calendar/", json=event_data)
         if response.status_code == 200:
-            flash(f"Event successfully added.")
+            flash(f"Event successfully added.", "success")
             return redirect(url_for("event_calendar.index"))
         elif response.status_code == 400:
-            flash(response.json()["detail"])
+            flash(response.json()["detail"], "error")
         else:
-            flash("Failed to add event.")
+            flash("Failed to add event.", "error")
 
     return render_template("calendar/add_event.html")
 
@@ -121,13 +121,13 @@ def update_event(event_id):
             f"http://127.0.0.1:8327/calendar/{event_id}", json=event_data
         )
         if response.status_code == 200:
-            flash("Event updated successfully.")
+            flash("Event updated successfully.", "success")
             return redirect(url_for("event_calendar.index"))
 
         elif response.status_code == 400:
-            flash(response.json()["detail"])
+            flash(response.json()["detail"], "error")
         else:
-            flash("Failed to update event.")
+            flash("Failed to update event.", "error")
 
     event = get_event_id(event_id)
 
@@ -145,12 +145,12 @@ def delete_event(event_id):
     if request.method == "POST":
         response = requests.delete(f"http://127.0.0.1:8327/calendar/{event_id}")
         if response.status_code == 200:
-            flash("Event deleted successfully.")
+            flash("Event deleted successfully.", "success")
         else:
-            flash("Error: Failed to delete event.")
+            flash("Error: Failed to delete event.", "error")
         return redirect(url_for("event_calendar.view_calendar"))
     else:
-        flash("Delete operation cancelled.")
+        flash("Delete operation cancelled.", "warning")
     return redirect(url_for("event_calendar.view_calendar"))
 
 
