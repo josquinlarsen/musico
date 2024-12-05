@@ -46,7 +46,8 @@ def format_json(weather_json):
     weather_data = []
     weather_data.append(weather_json["temperature"])
     for item in weather_json["messages"]:
-        weather_data.append(item["message"])
+        weather_data.append(item['temp_message'])
+        weather_data.append(item['precip_message'])
 
     return weather_data
 
