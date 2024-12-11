@@ -1,5 +1,5 @@
 # musico 
-
+musico is full-stack web application that leverages microservice architecture to allow users to manage a client roster, music library, event calendar, and check current weather conditions. Geared toward the working musician. User authentication and authorization secures data. 
 ## technologies
 - Flask
 - Python
