@@ -463,9 +463,13 @@
   }
 
   .material-symbols-outlined.error {
-    color: var(--chili)
+    color: var(--chili);
+    border:none;
+    background-color: unset;
   }
 
   .material-symbols-outlined.warning {
     color:var(--darkyellow);
+    border:none;
+    background-color: unset;
   }
