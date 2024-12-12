@@ -1,6 +1,7 @@
 .venv/
 .env/
 venv/
+.venv
 .__pycache__
 __pycache__
 
@@ -8,7 +9,7 @@ __pycache__
 __pycache__/
 
 instance/
-
+.DS_Store
 .pytest_cache/
 .coverage
 htmlcov/

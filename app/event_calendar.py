@@ -23,10 +23,8 @@ def index():
 
     today = datetime.today()
     year, month = today.year, today.month
-    events = get_event_all()
-    return redirect(
-        url_for("event_calendar.view_calendar", year=year, month=month, events=events)
-    )
+
+    return redirect(url_for("event_calendar.view_calendar", year=year, month=month))
 
 
 @bp.route("/<int:year>/<int:month>")
